@@ -1,0 +1,81 @@
+private void DefineMockMethod(TypeBuilder tb, MockMethod mm, FieldBuilder fmms)
+        {
+            MethodInfo mi = mm.Method;
+            Type[] argTypes = ToTypeArray(mm.Method.GetParameters());
+            MethodBuilder mb = tb.DefineMethod(mi.Name,
+                 MethodAttributes.Virtual | MethodAttributes.Public | MethodAttributes.ReuseSlot | MethodAttributes.HideBySig,
+                 mi.ReturnType,
+                 argTypes);
+            ILGenerator il = mb.GetILGenerator();
+
+            LocalBuilder V_0 = il.DeclareLocal(typeof(int));
+            LocalBuilder V_1 = il.DeclareLocal(typeof(MockMethod));
+            LocalBuilder V_2 = il.DeclareLocal(typeof(object[]));
+            
+            Label forBody = il.DefineLabel();
+            Label forEvaluation = il.DefineLabel();
+            Label notThisMethod = il.DefineLabel();
+
+
+            il.Emit(OpCodes.Ldc_I4_0);
+            il.Emit(OpCodes.Stloc_0);
+            il.Emit(OpCodes.Br_S, forEvaluation);
+
+            il.MarkLabel(forBody);
+            il.Emit(OpCodes.Ldarg_0);
+            il.Emit(OpCodes.Ldfld, fmms);
+            il.Emit(OpCodes.Ldloc_0);
+            il.Emit(OpCodes.Ldelem_Ref);
+            il.Emit(OpCodes.Stloc_1);
+            il.Emit(OpCodes.Ldloc_1);
+            il.Emit(OpCodes.Callvirt, typeof(MockMethod).GetMethod("get_Method"));
+            il.Emit(OpCodes.Callvirt, typeof(MemberInfo).GetMethod("get_Name"));
+            il.Emit(OpCodes.Ldstr, mi.Name);
+            il.Emit(OpCodes.Callvirt, typeof(string).GetMethod("Equals", new[] { typeof(string) }));
+            il.Emit(OpCodes.Brfalse_S, notThisMethod);
+
+            il.Emit(OpCodes.Ldloc_1);
+
+            il.Emit(OpCodes.Ldc_I4, argTypes.Length);
+            il.Emit(OpCodes.Newarr, typeof(object));
+            il.Emit(OpCodes.Stloc_2);
+
+				for(int i = 0; i < argTypes.Length; i++)
+				{
+                il.Emit(OpCodes.Ldloc_2);
+                il.Emit(OpCodes.Ldc_I4, i);
+                il.Emit(OpCodes.Ldarg, i + 1);
+                if (argTypes[i].IsValueType)
+                    il.Emit(OpCodes.Box, argTypes[i]);
+                il.Emit(OpCodes.Stelem_Ref);
+            }
+            il.Emit(OpCodes.Ldloc_2);
+
+            MethodInfo cm = typeof(MockMethod).GetMethod("Call");
+            il.Emit(OpCodes.Callvirt, cm);
+
+            if (mi.ReturnType == typeof(void))
+                il.Emit(OpCodes.Pop);
+            else if (mi.ReturnType.IsValueType && !cm.ReturnType.IsValueType)
+                il.Emit(OpCodes.Unbox_Any, mi.ReturnType);
+            else
+                il.Emit(OpCodes.Castclass, mi.ReturnType);
+
+            il.Emit(OpCodes.Ret);
+            il.MarkLabel(notThisMethod);
+            il.Emit(OpCodes.Ldloc_0);
+            il.Emit(OpCodes.Ldc_I4_1);
+            il.Emit(OpCodes.Add);
+            il.Emit(OpCodes.Stloc_0);
+
+
+            il.MarkLabel(forEvaluation);
+            il.Emit(OpCodes.Ldloc_0);
+            il.Emit(OpCodes.Ldarg_0);
+            il.Emit(OpCodes.Ldfld, fmms);
+            il.Emit(OpCodes.Ldlen);
+            il.Emit(OpCodes.Conv_I4);
+            il.Emit(OpCodes.Blt_S, forBody);
+            il.Emit(OpCodes.Newobj, typeof(NotImplementedException).GetConstructor(new Type[0]));
+            il.Emit(OpCodes.Throw);
+        }

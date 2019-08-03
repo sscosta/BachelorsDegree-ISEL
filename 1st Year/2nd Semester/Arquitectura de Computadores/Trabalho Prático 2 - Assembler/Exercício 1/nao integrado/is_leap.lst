@@ -1,0 +1,49 @@
+ASSEMBLER PDS16 - v3.0.2 
+C:\Users\Samuel\Desktop\Arquitetura de Computadores\Trabalho Prático 2 - Assembler\Exercício 1\is_leap.lst 	 Sun Apr 30 18:02:17 2017
+
+              1    
+              2    
+              3    
+              4    .section is_leap
+              5       	.org 40
+              6    _result:
+
+
+<<<ERRO>>> Parse error: word
+              7    		word 0
+
+
+              8    		
+
+
+<<<ERRO>>> Simbolo desconhecido: _yearinsearch
+              9       		ld r1,_yearinsearch
+
+
+             10    _shift:	shr r2,r1,#1,0
+             11       		jc _naobissexto
+             12       		shr r2,r2,#1,0
+             13       		jc _naobissexto
+             14    _bissexto:
+
+
+<<<ERRO>>> Parse error: _result
+             15       		st _result,#0x01
+
+
+             16    		jmp _after
+             17    _naobissexto:
+
+
+<<<ERRO>>> Parse error: _result
+             18    		st _result,#0x00
+
+
+             19       		jmp _after
+             20    
+             21    _after:	
+
+
+<<<ERRO>>> Parse error: 
+             22    		ret
+

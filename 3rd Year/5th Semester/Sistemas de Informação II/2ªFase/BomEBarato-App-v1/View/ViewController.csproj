@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F6A5C67-6713-4688-B16A-D33BA911ECDD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>View</RootNamespace>
+    <AssemblyName>View</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AverageOfSalesOfAProductInPresentYear.cs" />
+    <Compile Include="Commands\AskForSupplyOfProductsOutOfStock.cs" />
+    <Compile Include="Commands\AddProdParaVendaEmFranqueado.cs" />
+    <Compile Include="Commands\FirstPhaseOfOrderToSuppliers.cs" />
+    <Compile Include="Commands\DeleteFranchisee.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="Commands\CRUFranqueado.cs" />
+    <Compile Include="Commands\CRUProduto.cs" />
+    <Compile Include="Commands\InteractionWithCostumerInCashRegister.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Commands\OrderToSuppliers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\RemoveAllOfProduct.cs" />
+    <Compile Include="Commands\ReceivePriceProposalFromSupplier.cs" />
+    <Compile Include="Commands\ThirdPhaseOfOrderToSuppliers.cs" />
+    <Compile Include="Commands\TotalSalesByFranchiseeInPresentYear.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DALAbstraction\DALAbstraction.csproj">
+      <Project>{07CCD0D6-551C-460C-A037-A2E0F8FEEA6A}</Project>
+      <Name>DALAbstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALEntregaInterfaces\DALEntregaInterfaces.csproj">
+      <Project>{19ED4849-BF00-4893-82AD-9E967463ECA7}</Project>
+      <Name>DALEntregaInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALFornecedorInterfaces\DALFornecedorInterfaces.csproj">
+      <Project>{FCE05313-C73A-407A-9BD1-6034A09D20AA}</Project>
+      <Name>DALFornecedorInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALFornecedorProdutoInterfaces\DALFornecedorProdutoInterfaces.csproj">
+      <Project>{6D28AA90-7829-4937-8FF4-FDC59594DE27}</Project>
+      <Name>DALFornecedorProdutoInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALFranqueadoInterfaces\DALFranqueadoInterfaces.csproj">
+      <Project>{39E04408-E997-4F4E-AB38-5B2BD8E96C40}</Project>
+      <Name>DALFranqueadoInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALHistoricoVendasInterfaces\DALHistoricoVendasInterfaces.csproj">
+      <Project>{87A0C335-5F02-4037-8ED9-7021D61C1F13}</Project>
+      <Name>DALHistoricoVendasInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALProdutoInterfaces\DALProdutoInterfaces.csproj">
+      <Project>{FA3FAFF7-AFF3-4F60-BD3E-5989CFCF6713}</Project>
+      <Name>DALProdutoInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALProdVendidoProFranqueadoInterfaces\DALProdVendidoPorFranqueadoInterfaces.csproj">
+      <Project>{37C2D86C-216C-4FED-82A8-B21294AE5AE2}</Project>
+      <Name>DALProdVendidoPorFranqueadoInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALTipoProdutoInterfaces\DALTipoProdutoInterfaces.csproj">
+      <Project>{045B5039-7259-4A29-901A-8252274FC5F8}</Project>
+      <Name>DALTipoProdutoInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{373EC88F-6431-416A-96C3-57E2BECFA355}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALEntrega\SpecificDALEntrega.csproj">
+      <Project>{EEB9EA8C-D574-40AD-AFBC-3C075B53713E}</Project>
+      <Name>SpecificDALEntrega</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALFornecedorProduto\SpecificDALFornecedorProduto.csproj">
+      <Project>{2379C99B-DAAB-411E-ADDB-0F76A8C5188A}</Project>
+      <Name>SpecificDALFornecedorProduto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALFornecedor\SpecificDALFornecedor.csproj">
+      <Project>{BD60CB48-CE0C-480F-A73A-318F0693E8A3}</Project>
+      <Name>SpecificDALFornecedor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALFranqueado\SpecificDALFranqueado.csproj">
+      <Project>{06E39200-8584-4299-BB61-C6775736B291}</Project>
+      <Name>SpecificDALFranqueado</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALHistoricoVendas\SpecificDALHistoricoVendas.csproj">
+      <Project>{32ADD3F4-9E57-491F-900C-03515BD7BBF2}</Project>
+      <Name>SpecificDALHistoricoVendas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALProduto\SpecificDALProduto.csproj">
+      <Project>{20B6B6AA-149E-4C35-96B5-6E5DAC9A0910}</Project>
+      <Name>SpecificDALProduto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALProdVendidoPorFranqueado\SpecificDALProdVendidoPorFranqueado.csproj">
+      <Project>{4DACB116-93FB-443C-B09F-E1E23CD3DCDA}</Project>
+      <Name>SpecificDALProdVendidoPorFranqueado</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificDALTipoProduto\SpecificDALTipoProduto.csproj">
+      <Project>{CBB3387F-3602-46C1-914C-D210FEE0EF36}</Project>
+      <Name>SpecificDALTipoProduto</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

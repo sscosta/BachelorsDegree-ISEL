@@ -1,0 +1,6 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\Entidades\bin\Debug\Entidades.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\Entidades\bin\Debug\Entidades.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\Entidades\obj\Debug\Entidades.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\Entidades\obj\Debug\Entidades.pdb

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f88a5d6101b41ac8bf7e1d7ff1d5014" Name="Diagram1">
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.Entrega" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.Fornecedor" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.Franqueado" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.HistoricoVendas" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.Produto" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.ProdVendidoPorFranqueado" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.TipoProduto" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Entrega__franq_i__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Entrega__prod_id__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Historico__franq__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__ProdVendi__franq__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Historico__prod___46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Produto__tipo__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__ProdVendi__prod___4316F928" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SI2_Bom_e_BaratoModel.FornecedorProduto" Width="1.5" PointX="5.25" PointY="9.625" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Fornecedo__forn___625A9A57" />
+        <AssociationConnector Association="SI2_Bom_e_BaratoModel.FK__Fornecedo__prod___634EBE90" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

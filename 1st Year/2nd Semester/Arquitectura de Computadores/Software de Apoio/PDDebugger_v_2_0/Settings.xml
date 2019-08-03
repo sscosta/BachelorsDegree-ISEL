@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<fonts friendlyname="Fontes" description ="Alterar tipos de letra">
+		<editorFont friendlyname="Janela de Debug" type="System.Drawing.Font" description="Tipo de letra da janela de Debug" propertyName="DebugWindowFont" />
+	</fonts>
+	<colors friendlyname="Cores" description ="Alterar tipos de letra">
+		<debugwindow friendlyname="Janela de Debug" description ="Alterar tipos de letra">
+			<breakpoints friendlyname="BreakPoints" description ="Alterar tipos de letra">
+				<code friendlyname="Código" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+				<dataread friendlyname="Leitura de Dados" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+				<datawrite friendlyname="Escrita de Dados" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			</breakpoints>
+			<comments friendlyname="Comentários" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<directives friendlyname="Directivas" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<plaintext friendlyname="Texto Normal" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<opcodes friendlyname="OpCodes" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<labels friendlyname="Labels" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<literals friendlyname="Literais" description ="Alterar tipos de letra">
+				<alphanumeric friendlyname="Alfa-Numéricos" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+				<numeric friendlyname="Numéricos" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			</literals>
+			<operators friendlyname="Operadores" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<registers friendlyname="Registos" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+			<programcounter friendlyname="Localização do Program Counter" description ="Alterar tipos de letra" type="System.Drawing.Color" />
+		</debugwindow>
+	</colors>
+	<timeouts friendlyname="Timeouts" description ="Alterar tipos de letra">
+		<read friendlyname="Leitura" description ="Alterar tipos de letra" type="System.Int32" />
+		<write friendlyname="Escrita" description ="Alterar tipos de letra" type="System.Int32" />
+	</timeouts>
+</configuration>

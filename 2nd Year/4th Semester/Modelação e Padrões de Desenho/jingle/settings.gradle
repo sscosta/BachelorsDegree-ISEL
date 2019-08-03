@@ -1,0 +1,8 @@
+// To declare projects as part of a multi-project build use the 'include' method
+
+include 'jingle-util'
+include 'jingle-lazy'
+include 'jingle'
+include 'jingle-async'
+
+rootProject.name = 'jingle'

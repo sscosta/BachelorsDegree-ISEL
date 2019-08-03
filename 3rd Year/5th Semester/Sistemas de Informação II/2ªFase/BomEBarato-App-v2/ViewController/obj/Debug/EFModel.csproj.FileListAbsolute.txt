@@ -1,0 +1,12 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\obj\Debug\EFModel.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\obj\Debug\EFModel.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\ViewController.dll.config
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\ViewController.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\ViewController.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\EntityFramework.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\EntityFramework.SqlServer.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\EntityFramework.xml
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\bin\Debug\EntityFramework.SqlServer.xml
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\obj\Debug\EFModel.csproj.CopyComplete
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\obj\Debug\ViewController.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\ViewController\obj\Debug\ViewController.pdb

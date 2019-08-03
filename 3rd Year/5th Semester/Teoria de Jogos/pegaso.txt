@@ -1,0 +1,24 @@
+Pegaso := proc (posicao)
+local o;
+option remember;
+
+o := [];
+
+/*para cima uma casa*/
+if posicao[1] > 1
+then
+	Add(o,Pegaso([posicao[1]-1,posicao[2]]));
+fi;
+/*na diagonal uma casa*/
+if posicao[1] > 1 and posicao[2] > 1
+then
+	Add(o,Pegaso([posicao[1]-1,posicao[2]-1]));
+fi;
+/*na mesma linha duas casas para esquerda*/
+if posicao[2] > 2
+then
+	Add(o,Pegaso([posicao[1],posicao[2]-2]));
+fi;
+/*como e um jogo imparcial as opcoes de left sao as mesmas que as opcoes de right*/
+return {o | o};
+end;

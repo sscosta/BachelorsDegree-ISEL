@@ -1,0 +1,45 @@
+Name		EXAMINADOR ;
+PartNo		 0 ;
+Date		17-10-2016 ;
+Revision	01 ;
+Designer	G04 ;
+Company	CCISEL ;
+Assembly	None ;
+Location	;
+Device		p22v10 ;
+
+/**************** INPUT PINS ****************************/
+PIN 1 = F0  ;
+PIN 2 = F1 ;
+PIN 3 = F2 ;
+PIN 4 = A ;
+PIN 5 = B ;
+PIN 6 = R;
+PIN 7 = VALIDAR;
+
+
+/**************** OUTPUT PINS ***************************/
+PIN 16 = FR;
+PIN 19 = RESULT ;
+PIN 20 = NF;
+PIN 23 = OK;
+
+/****************PRIORITY***********************/
+
+CF0 = F0 # !F0 &F1 & F2 ;
+
+CF1 = !F0 & F2 # F1 & !F0;
+
+NF = !F0 & !F1 & !F2;
+
+/****************FUNCTIONRESULT**************/
+
+FR = !CF0 & CF1 & B #
+      CF1 & A & !B #
+      CF0 & !CF1 & A & B #
+      CF1 & !A & B;
+
+/****************VALIDARRESULT**************/
+RESULT = !(FR$R)# NF;
+
+OK = RESULT # !VALIDAR;

@@ -1,0 +1,7 @@
+drop table comment;
+drop table issuelabel;
+drop table projectlabel;
+drop table issue;
+drop table label;
+drop table project;
+drop table status;

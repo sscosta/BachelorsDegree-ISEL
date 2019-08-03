@@ -1,0 +1,12 @@
+cfTable := proc(n)
+local i,j,Linha,table;
+table := CreateTable(n);
+for i from 1 to n do
+Linha:=[];
+for j from 1 to n do
+Linha[j]:=GValue(Pegaso([i,j]));
+od;
+AddTableRow(table, Linha);
+od;
+table
+end;

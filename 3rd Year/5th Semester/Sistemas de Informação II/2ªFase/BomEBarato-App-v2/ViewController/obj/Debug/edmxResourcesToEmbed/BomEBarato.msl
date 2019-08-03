@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SI2_Bom_e_BaratoModelStoreContainer" CdmEntityContainer="SI2_Bom_e_BaratoEntities">
+    <EntitySetMapping Name="Entrega">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.Entrega">
+        <MappingFragment StoreEntitySet="Entrega">
+          <ScalarProperty Name="franq_id" ColumnName="franq_id" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="valor_ped" ColumnName="valor_ped" />
+          <ScalarProperty Name="valor_forn" ColumnName="valor_forn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fornecedor">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.Fornecedor">
+        <MappingFragment StoreEntitySet="Fornecedor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nif" ColumnName="nif" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Franqueado">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.Franqueado">
+        <MappingFragment StoreEntitySet="Franqueado">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nif" ColumnName="nif" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="morada" ColumnName="morada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoricoVendas">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.HistoricoVendas">
+        <MappingFragment StoreEntitySet="HistoricoVendas">
+          <ScalarProperty Name="franq_id" ColumnName="franq_id" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="hist_3_anos" ColumnName="hist_3_anos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produto">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.Produto">
+        <MappingFragment StoreEntitySet="Produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cod" ColumnName="cod" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="stock_total" ColumnName="stock_total" />
+          <ScalarProperty Name="stock_min" ColumnName="stock_min" />
+          <ScalarProperty Name="stock_max" ColumnName="stock_max" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdVendidoPorFranqueado">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.ProdVendidoPorFranqueado">
+        <MappingFragment StoreEntitySet="ProdVendidoPorFranqueado">
+          <ScalarProperty Name="franq_id" ColumnName="franq_id" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="preco_unitario" ColumnName="preco_unitario" />
+          <ScalarProperty Name="stock_total" ColumnName="stock_total" />
+          <ScalarProperty Name="stock_min" ColumnName="stock_min" />
+          <ScalarProperty Name="stock_max" ColumnName="stock_max" />
+          <ScalarProperty Name="dt_ultima_venda" ColumnName="dt_ultima_venda" />
+          <ScalarProperty Name="qtd_vendas" ColumnName="qtd_vendas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoProduto">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.TipoProduto">
+        <MappingFragment StoreEntitySet="TipoProduto">
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FornecedorProduto">
+      <EntityTypeMapping TypeName="SI2_Bom_e_BaratoModel.FornecedorProduto">
+        <MappingFragment StoreEntitySet="FornecedorProduto">
+          <ScalarProperty Name="dummy" ColumnName="dummy" />
+          <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+          <ScalarProperty Name="forn_id" ColumnName="forn_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

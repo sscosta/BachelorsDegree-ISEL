@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Circuit</string>
+    <string name="Title_text">Circuit</string>
+    <string name="Level_text">level %1$d</string>
+    <string name="Next_Level_text">Next Level</string>
+    <string name="Time_text">Time</string>
+
+</resources>

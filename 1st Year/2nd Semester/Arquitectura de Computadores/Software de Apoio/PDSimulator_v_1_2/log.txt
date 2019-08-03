@@ -1,0 +1,23 @@
+2017-05-06 16:12:29,678 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.debuggerCommands.DbgReadMemBurst
+2017-05-06 16:12:29,678 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs = 129
+2017-05-06 16:12:29,678 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs
+2017-05-06 16:12:29,693 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.debuggerCommands.DbgReadMemBurst
+2017-05-06 16:12:29,693 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.debuggerCommands.DbgReadMemBurst
+2017-05-06 16:12:29,693 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs = 129
+2017-05-06 16:12:29,693 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs
+2017-05-06 16:12:29,693 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.debuggerCommands.DbgReadMemBurst
+2017-05-06 16:12:29,709 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.debuggerCommands.DbgReadMemBurst
+2017-05-06 16:12:29,709 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs = 129
+2017-05-06 16:12:29,709 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs
+2017-05-06 16:12:29,709 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.debuggerCommands.DbgReadMem
+2017-05-06 16:12:29,709 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.debuggerCommands.DbgReadMem
+2017-05-06 16:12:29,725 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs = 129
+2017-05-06 16:12:29,725 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs
+2017-05-06 16:12:29,740 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.debuggerCommands.DbgReadBrkRegBurst
+2017-05-06 16:12:29,740 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.debuggerCommands.DbgReadBrkRegBurst
+2017-05-06 16:12:29,740 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs = 129
+2017-05-06 16:12:29,740 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs
+2017-05-06 16:12:29,756 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.debuggerCommands.DbgReadRegBurst
+2017-05-06 16:12:29,756 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.debuggerCommands.DbgReadRegBurst
+2017-05-06 16:12:29,756 INFO   [Main thread] PD4Control.ioInterface.CommandCenter - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs = 129
+2017-05-06 16:12:29,756 INFO   [IO Channel Thread] PD4Control.ioInterface.IOCommandServer - PD4ComProtocol.cpuAnswers.CpuAnswWithArgs

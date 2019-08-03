@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1660057831",
+    "firebase_url": "https://yama-8d083.firebaseio.com",
+    "project_id": "yama-8d083",
+    "storage_bucket": "yama-8d083.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1660057831:android:15bfaf7363918165",
+        "android_client_info": {
+          "package_name": "codeboys.pdm_tp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1660057831-e8j0rtk0lkmt8s2n8qmn2aagtbm7mb7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "codeboys.pdm_tp",
+            "certificate_hash": "6b2f35ac404da52c5e0eb88efffa5cca6038defa"
+          }
+        },
+        {
+          "client_id": "1660057831-qk1th9vnmbfdr5nsqu4bghu839rl149o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoB__PExrlD_O6-KI4PUD29kckL8SyPEM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1660057831-qk1th9vnmbfdr5nsqu4bghu839rl149o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

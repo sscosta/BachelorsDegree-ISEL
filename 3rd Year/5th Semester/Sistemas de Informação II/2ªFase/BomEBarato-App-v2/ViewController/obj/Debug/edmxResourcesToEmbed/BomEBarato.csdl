@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SI2_Bom_e_BaratoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Entrega">
+    <Key>
+      <PropertyRef Name="franq_id" />
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="franq_id" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <Property Name="valor_ped" Type="Int32" Nullable="false" />
+    <Property Name="valor_forn" Type="Int32" />
+    <NavigationProperty Name="Franqueado" Relationship="Self.FK__Entrega__franq_i__6477ECF3" FromRole="Entrega" ToRole="Franqueado" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Entrega__prod_id__656C112C" FromRole="Entrega" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Fornecedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nif" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FornecedorProduto" Relationship="SI2_Bom_e_BaratoModel.FK__Fornecedo__forn___625A9A57" FromRole="Fornecedor" ToRole="FornecedorProduto" />
+  </EntityType>
+  <EntityType Name="Franqueado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Precision="4" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nif" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="morada" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Entrega" Relationship="Self.FK__Entrega__franq_i__6477ECF3" FromRole="Franqueado" ToRole="Entrega" />
+    <NavigationProperty Name="HistoricoVendas" Relationship="Self.FK__Historico__franq__45F365D3" FromRole="Franqueado" ToRole="HistoricoVendas" />
+    <NavigationProperty Name="ProdVendidoPorFranqueado" Relationship="Self.FK__ProdVendi__franq__4222D4EF" FromRole="Franqueado" ToRole="ProdVendidoPorFranqueado" />
+  </EntityType>
+  <EntityType Name="HistoricoVendas">
+    <Key>
+      <PropertyRef Name="franq_id" />
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="franq_id" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <Property Name="hist_3_anos" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Franqueado" Relationship="Self.FK__Historico__franq__45F365D3" FromRole="HistoricoVendas" ToRole="Franqueado" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Historico__prod___46E78A0C" FromRole="HistoricoVendas" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cod" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stock_total" Type="Int32" Nullable="false" />
+    <Property Name="stock_min" Type="Int32" Nullable="false" />
+    <Property Name="stock_max" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Entrega" Relationship="Self.FK__Entrega__prod_id__656C112C" FromRole="Produto" ToRole="Entrega" />
+    <NavigationProperty Name="HistoricoVendas" Relationship="Self.FK__Historico__prod___46E78A0C" FromRole="Produto" ToRole="HistoricoVendas" />
+    <NavigationProperty Name="TipoProduto" Relationship="Self.FK__Produto__tipo__3C69FB99" FromRole="Produto" ToRole="TipoProduto" />
+    <NavigationProperty Name="ProdVendidoPorFranqueado" Relationship="Self.FK__ProdVendi__prod___4316F928" FromRole="Produto" ToRole="ProdVendidoPorFranqueado" />
+    <NavigationProperty Name="FornecedorProduto" Relationship="SI2_Bom_e_BaratoModel.FK__Fornecedo__prod___634EBE90" FromRole="Produto" ToRole="FornecedorProduto" />
+  </EntityType>
+  <EntityType Name="ProdVendidoPorFranqueado">
+    <Key>
+      <PropertyRef Name="franq_id" />
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="franq_id" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <Property Name="preco_unitario" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="stock_total" Type="Int32" />
+    <Property Name="stock_min" Type="Int32" />
+    <Property Name="stock_max" Type="Int32" />
+    <Property Name="dt_ultima_venda" Type="DateTime" Precision="0" />
+    <Property Name="qtd_vendas" Type="Int64" />
+    <NavigationProperty Name="Franqueado" Relationship="Self.FK__ProdVendi__franq__4222D4EF" FromRole="ProdVendidoPorFranqueado" ToRole="Franqueado" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__ProdVendi__prod___4316F928" FromRole="ProdVendidoPorFranqueado" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="TipoProduto">
+    <Key>
+      <PropertyRef Name="descricao" />
+    </Key>
+    <Property Name="descricao" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Produto" Relationship="Self.FK__Produto__tipo__3C69FB99" FromRole="TipoProduto" ToRole="Produto" />
+  </EntityType>
+  <Association Name="FK__Entrega__franq_i__6477ECF3">
+    <End Role="Franqueado" Type="Self.Franqueado" Multiplicity="1" />
+    <End Role="Entrega" Type="Self.Entrega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Franqueado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Entrega">
+        <PropertyRef Name="franq_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Entrega__prod_id__656C112C">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="Entrega" Type="Self.Entrega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Entrega">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Historico__franq__45F365D3">
+    <End Role="Franqueado" Type="Self.Franqueado" Multiplicity="1" />
+    <End Role="HistoricoVendas" Type="Self.HistoricoVendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Franqueado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="HistoricoVendas">
+        <PropertyRef Name="franq_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProdVendi__franq__4222D4EF">
+    <End Role="Franqueado" Type="Self.Franqueado" Multiplicity="1" />
+    <End Role="ProdVendidoPorFranqueado" Type="Self.ProdVendidoPorFranqueado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Franqueado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProdVendidoPorFranqueado">
+        <PropertyRef Name="franq_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Historico__prod___46E78A0C">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="HistoricoVendas" Type="Self.HistoricoVendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="HistoricoVendas">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Produto__tipo__3C69FB99">
+    <End Role="TipoProduto" Type="Self.TipoProduto" Multiplicity="1" />
+    <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProduto">
+        <PropertyRef Name="descricao" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProdVendi__prod___4316F928">
+    <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+    <End Role="ProdVendidoPorFranqueado" Type="Self.ProdVendidoPorFranqueado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProdVendidoPorFranqueado">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SI2_Bom_e_BaratoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Entrega" EntityType="Self.Entrega" />
+    <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" />
+    <EntitySet Name="Franqueado" EntityType="Self.Franqueado" />
+    <EntitySet Name="HistoricoVendas" EntityType="Self.HistoricoVendas" />
+    <EntitySet Name="Produto" EntityType="Self.Produto" />
+    <EntitySet Name="ProdVendidoPorFranqueado" EntityType="Self.ProdVendidoPorFranqueado" />
+    <EntitySet Name="TipoProduto" EntityType="Self.TipoProduto" />
+    <AssociationSet Name="FK__Entrega__franq_i__6477ECF3" Association="Self.FK__Entrega__franq_i__6477ECF3">
+      <End Role="Franqueado" EntitySet="Franqueado" />
+      <End Role="Entrega" EntitySet="Entrega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Entrega__prod_id__656C112C" Association="Self.FK__Entrega__prod_id__656C112C">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="Entrega" EntitySet="Entrega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Historico__franq__45F365D3" Association="Self.FK__Historico__franq__45F365D3">
+      <End Role="Franqueado" EntitySet="Franqueado" />
+      <End Role="HistoricoVendas" EntitySet="HistoricoVendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProdVendi__franq__4222D4EF" Association="Self.FK__ProdVendi__franq__4222D4EF">
+      <End Role="Franqueado" EntitySet="Franqueado" />
+      <End Role="ProdVendidoPorFranqueado" EntitySet="ProdVendidoPorFranqueado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Historico__prod___46E78A0C" Association="Self.FK__Historico__prod___46E78A0C">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="HistoricoVendas" EntitySet="HistoricoVendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Produto__tipo__3C69FB99" Association="Self.FK__Produto__tipo__3C69FB99">
+      <End Role="TipoProduto" EntitySet="TipoProduto" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProdVendi__prod___4316F928" Association="Self.FK__ProdVendi__prod___4316F928">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="ProdVendidoPorFranqueado" EntitySet="ProdVendidoPorFranqueado" />
+    </AssociationSet>
+    <EntitySet Name="FornecedorProduto" EntityType="SI2_Bom_e_BaratoModel.FornecedorProduto" />
+    <AssociationSet Name="FK__Fornecedo__forn___625A9A57" Association="SI2_Bom_e_BaratoModel.FK__Fornecedo__forn___625A9A57">
+      <End Role="Fornecedor" EntitySet="Fornecedor" />
+      <End Role="FornecedorProduto" EntitySet="FornecedorProduto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fornecedo__prod___634EBE90" Association="SI2_Bom_e_BaratoModel.FK__Fornecedo__prod___634EBE90">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="FornecedorProduto" EntitySet="FornecedorProduto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FornecedorProduto">
+    <Key>
+      <PropertyRef Name="forn_id" />
+      <PropertyRef Name="prod_id" />
+    </Key>
+    <Property Name="forn_id" Type="Int32" Nullable="false" />
+    <Property Name="prod_id" Type="Int32" Nullable="false" />
+    <Property Name="dummy" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Fornecedor" Relationship="SI2_Bom_e_BaratoModel.FK__Fornecedo__forn___625A9A57" FromRole="FornecedorProduto" ToRole="Fornecedor" />
+    <NavigationProperty Name="Produto" Relationship="SI2_Bom_e_BaratoModel.FK__Fornecedo__prod___634EBE90" FromRole="FornecedorProduto" ToRole="Produto" />
+  </EntityType>
+  <Association Name="FK__Fornecedo__forn___625A9A57">
+    <End Type="SI2_Bom_e_BaratoModel.Fornecedor" Role="Fornecedor" Multiplicity="1" />
+    <End Type="SI2_Bom_e_BaratoModel.FornecedorProduto" Role="FornecedorProduto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FornecedorProduto">
+        <PropertyRef Name="forn_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fornecedo__prod___634EBE90">
+    <End Type="SI2_Bom_e_BaratoModel.Produto" Role="Produto" Multiplicity="1" />
+    <End Type="SI2_Bom_e_BaratoModel.FornecedorProduto" Role="FornecedorProduto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FornecedorProduto">
+        <PropertyRef Name="prod_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

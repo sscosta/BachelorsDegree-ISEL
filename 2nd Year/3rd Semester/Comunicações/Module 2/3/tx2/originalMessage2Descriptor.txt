@@ -1,0 +1,6 @@
+
+Descriptor for originalMessage2.mat
+
+Encoding type: 			BPSK 
+Frequency of sampling: 	Fs = 80000 Hz
+Binary Debit:			Rb =  1000 bit/s

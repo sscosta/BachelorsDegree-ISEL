@@ -1,0 +1,13 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\SpecificDALFornecedor.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\SpecificDALFornecedor.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\DALAbstraction.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\DALFornecedorInterfaces.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\Entidades.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\DALAbstraction.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\DALFornecedorInterfaces.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\bin\Debug\Entidades.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\obj\Debug\SpecificDALFornecedor.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\obj\Debug\SpecificDALFornecedor.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\obj\Debug\SpecificDALFornecedor.csproj.CopyComplete
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\obj\Debug\SpecificDALFornecedor.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedor\obj\Debug\SpecificDALFornecedor.pdb

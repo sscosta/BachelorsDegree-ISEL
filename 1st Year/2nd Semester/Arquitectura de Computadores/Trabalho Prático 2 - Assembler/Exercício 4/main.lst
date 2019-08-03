@@ -1,0 +1,256 @@
+ASSEMBLER PDS16 - v3.0.2 
+C:\Users\Samuel\Desktop\Arquitetura de Computadores\Trabalho Prático 2 - Assembler\Exercício 4\main.lst 	 Sat May 06 16:11:25 2017
+
+**********************************************************************************************
+Secção                 Endereço
+**********************************************************************************************
+
+section_days_since      0000H
+section_year_days       0000H
+section_main            0000H
+section_is_leap         0002H
+DATA                    0004H
+TEXT                    0058H
+
+
+**********************************************************************************************
+Símbolo                Tipo   Valor
+**********************************************************************************************
+
+day1                    E     000AH
+day2                    E     0010H
+days                    E     0004H
+days_of_year            E     0032H
+days_since              E     0058H
+days_since_end          E     0084H
+days_since_link         E     0036H
+exit                    E     00C4H
+is_leap                 E     00AEH
+is_leap_bissexto        E     00B8H
+is_leap_end             E     00C0H
+is_leap_naobissexto     E     00BCH
+is_leap_r1              E     0002H
+main                    E     0014H
+month1                  E     0008H
+month2                  E     000EH
+table_month             E     0038H
+TABLE_MONTH_DIM         N     000DH
+year                    E     0034H
+year1                   E     0006H
+year2                   E     000CH
+year_days               E     0088H
+year_days_end           E     00A6H
+year_days_link          E     0056H
+year_days_r3            E     0052H
+year_days_r4            E     0054H
+year_ref                E     0012H
+years_for_increment     E     006CH
+
+
+E - Endereço   N - Constante numérica
+
+
+**********************************************************************************************
+Endereço  Código            Linha    Programa
+**********************************************************************************************
+
+                                1    /*
+                                2    uint16 days;
+                                3    uint16 year1 = 2017;
+                                4    uint8 month1 = 3;
+                                5    uint8 day1 = 30;
+                                6    uint16 year2 = 1995;
+                                7    uint8 month2 = 3;
+                                8    uint8 day2 = 8;
+                                9    void main() {
+                               10    days = days_since(1970, year1, month1, day1) -
+                               11     days_since(1970, year2, month2, day2);
+                               12    }
+                               13    
+                               14    */
+                               15    		/****************************************************/
+                               16    		/*	Calculates number of days between two dates		*/
+                               17    		/*	saved in memory.								*/
+                               18    		/*	input - year1, month1, day1	- date end			*/
+                               19    		/*			year2, month2, day2	- date beggining	*/
+                               20    		/*	output - days - number of days					*/
+                               21    		/****************************************************/
+                               22    		
+                               23    .section section_main
+                               24     .org 0
+    0000  604F                 25     jmp main
+                               26    .data
+                               27    days:
+    0004  0000                 28    	.word 0
+                               29    year1:
+    0006  07E1                 30    	.word 2017
+                               31    month1:
+    0008  0003                 32    	.word 3
+                               33    day1:
+    000A  001E                 34    	.word 30
+                               35    year2:
+    000C  07CB                 36    	.word 1995
+                               37    month2:
+    000E  0003                 38    	.word 3
+                               39    day2:
+    0010  0008                 40    	.word 8
+                               41    year_ref:
+    0012  07B2                 42    	.word 1970
+                               43    
+                               44    main:
+    0014  1490                 45    	ld r0, year_ref
+    0016  1431                 46    	ld r1, year1
+    0018  1442                 47    	ld r2, month1
+    001A  1453                 48    	ld r3, day1
+    001C  68EF                 49    	jmpl days_since
+    001E  3420                 50    	st r0, days
+    0020  1490                 51    	ld r0, year_ref
+    0022  1461                 52    	ld r1, year2
+    0024  1472                 53    	ld r2, month2
+    0026  1483                 54    	ld r3, day2
+    0028  68BF                 55    	jmpl days_since
+    002A  1421                 56    	ld r1, days
+    002C  8E0A                 57    	sub r2,r1,r0
+    002E  3422                 58    	st r2, days
+    0030  624F                 59    	jmp exit
+                               60    	
+                               61    		/****************************************************/
+                               62    		/*	Calculates number of days of year since 		*/
+                               63    		/*	the beggining of the year used as reference.	*/
+                               64    		/*	input - r0 year of reference					*/
+                               65    		/*			r1 year									*/
+                               66    		/*			r2 month								*/
+                               67    		/*			r3 day									*/
+                               68    		/*	output - r0	number of days						*/
+                               69    		/****************************************************/
+                               70     .section section_days_since
+                               71    .data
+                               72    days_of_year:
+    0032  016D                 73    		.word 365
+                               74    		
+                               75    year:
+    0034  0000                 76    		.word 	0
+                               77    days_since_link:
+    0036  0000                 78    		.word	0
+                               79    	
+                               80     .text
+                               81    days_since:
+                               82    		;st		 r0,_year_ref; guarda parametros de entrada
+    0058  35A1                 83    		st		 r1,year
+                               84    		;st		 r2,_month
+                               85    		;st		 r3,_day
+    005A  CEDC                 86    		mov		r4,r3
+    005C  CE03                 87    		mov		r3,r0			;r3<Ano ref    prepara variaveis para a funcao year_days
+    005E  CE48                 88    		mov		r0,r1			;r0<Ano
+    0060  CE91                 89    		mov		r1,r2			;r1<Mes
+    0062  CF22                 90    		mov		r2,r4			;r2<dia
+    0064  35B5                 91    		st		r5,days_since_link
+    0066  6887                 92    		jmpl	year_days
+    0068  15B5                 93    		ld		r5,days_since_link
+    006A  CE04                 94    		mov		r4,r0			;r4<resultado    mover resultado para r4
+                               95    
+                               96    years_for_increment:		
+    006C  15A1                 97    		ld		r1,year			;r1<Ano
+    006E  8E5A                 98    		sub	 	r2, r3, r1; diff r3<Ano ref - ano
+    0070  584F                 99    		jnc		days_since_end
+    0072  1592                100    		ld		r2,days_of_year
+    0074  86A4                101    		add		r4,r4,r2
+    0076  CED8                102    		mov		r0,r3
+    0078  35B5                103    		st		r5,days_since_link
+    007A  68CF                104    		jmpl	is_leap
+    007C  15B5                105    		ld		r5,days_since_link
+    007E  8624                106    		add		r4,r4,r0
+    0080  A45B                107    		inc		r3
+    0082  67A7                108    		jmp		years_for_increment	
+                              109    days_since_end:		
+    0084  CF20                110    		mov 	r0,r4
+    0086  CB6F                111    		ret
+                              112    		
+                              113    		/****************************************************/
+                              114    		/*	Calculates number of days of year to date.		*/
+                              115    		/*	input - r0 year of reference					*/
+                              116    		/*			r1 month								*/
+                              117    		/*			r2 day									*/
+                              118    		/*	output - r0	number of days						*/
+                              119    		/****************************************************/
+                              120    
+                              121    		.section section_year_days
+                              122    		.data
+                              123    		.equ TABLE_MONTH_DIM, 13
+                              124    table_month:
+    0038  0000001F003B005A    125    		.word 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365
+    .     0078009700B500D4
+    .     00F301110130014E
+    .     016D            
+
+                              126    year_days_r3:
+    0052  0000                127    		.word	0
+                              128    year_days_r4:
+    0054  0000                129    		.word	0
+                              130    year_days_link:
+    0056  0000                131    		.word	0
+                              132    		
+                              133    		.text
+                              134    year_days:
+    0088  3693                135    		st		r3,year_days_r3
+    008A  36A4                136    		st		r4,year_days_r4
+                              137    		
+    008C  AC52                138    		dec		r2						; decrementa um dia
+    008E  CE94                139    		mov 	r4,r2					; adiciona ao registo de retorno - nao utiliza r0 pq r0 ainda retem uma informacao
+                              140    		
+    0090  AC4B                141    		sub		r3,r1,#1				; decrementa o mes e guarda em r3
+    0092  01C2                142    		ldi 	r2, #low(table_month)
+    0094  0802                143    		ldih 	r2, #high(table_month)
+    0096  1ED2                144    		ld		r2,[r2,r3]				; obtem o numero de dia da tabela em relacao ao mes
+    0098  86A4                145    		add		r4,r4,r2				; adiciona o numero de dias à¸£à¸ variavel de resposta
+                              146    		
+    009A  AC8B                147    		sub 	r3,r1,#2				; verifica se mes>2
+    009C  5027                148    		jc		year_days_end
+    009E  36B5                149    		st		r5,year_days_link
+    00A0  6837                150    		jmpl	is_leap					;verifica se ano bissexto, ano em r0 e resposta em r0
+    00A2  16B5                151    		ld		r5,year_days_link
+    00A4  8624                152    		add		r4,r4,r0
+                              153    		
+                              154    year_days_end:
+    00A6  CF20                155    		mov		r0,r4
+    00A8  1693                156    		ld		r3,year_days_r3
+    00AA  16A4                157    		ld		r4,year_days_r4
+    00AC  CB6F                158    		ret
+                              159    			
+                              160    		
+                              161    
+                              162    		/****************************************************/
+                              163    		/*	Calculates if year is a leap year.				*/
+                              164    		/*	input - r0 year to calculate					*/
+                              165    		/*	output - r0 1 if year is leap year; 0 if not	*/
+                              166    		/****************************************************/
+                              167    
+                              168    		.section section_is_leap
+                              169    is_leap_r1:
+    0002  0000                170    		.word	0
+                              171    		
+                              172    		.text
+                              173    is_leap:
+    00AE  3411                174    		st		r1,is_leap_r1
+                              175    		
+    00B0  E841                176    		shr		r1,r0,#1,0
+    00B2  5027                177       		jc		is_leap_naobissexto
+    00B4  E849                178       		shr		r1,r1,#1,0
+    00B6  5017                179       		jc		is_leap_naobissexto
+                              180    is_leap_bissexto:
+    00B8  0008                181       		ldi		r0,#0x01
+    00BA  6017                182    		jmp		is_leap_end
+                              183    is_leap_naobissexto:
+    00BC  0000                184    		ldi		r0,#0x00
+    00BE  6007                185       		jmp		is_leap_end
+                              186    is_leap_end:	
+    00C0  1411                187    		ld		r1,is_leap_r1
+    00C2  CB6F                188    		ret
+                              189    		
+                              190    		
+                              191    
+                              192    		
+                              193    exit:		
+    00C4  67FF                194    		jmp $
+                              195    
+                              196    		.END

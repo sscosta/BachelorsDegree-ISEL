@@ -1,0 +1,44 @@
+-- Trigger: AutoUpdate
+
+select * from issue	
+
+	update issue
+	set description = 'outro teste'
+	where id = 35
+
+CREATE TRIGGER set_timestamp
+before insert ON issue
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+CREATE TRIGGER set_timestampOnUpdate
+before update ON issue
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestampOnUpdate();
+	
+	
+-- DROP TRIGGER "set_timestamp" ON public.issue;
+
+-- DROP FUNCTION public."trigger_set_timestamp"();
+
+CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-------
+CREATE OR REPLACE FUNCTION trigger_set_timestampOnUpdate()
+RETURNS TRIGGER AS $$
+BEGIN
+	if row(NEW.*) IS DISTINCT FROM row(OLD.*) THEN
+	  NEW.updated = NOW();
+	  RETURN NEW;
+	else
+	  RETURN old;
+	end if;
+END;
+$$ LANGUAGE plpgsql;
+

@@ -1,0 +1,137 @@
+ASSEMBLER PDS16 - v3.0.2 
+C:\Users\Samuel\Desktop\Arquitetura de Computadores\Trabalho Prático 2 - Assembler\Exercício 2\year_days.lst 	 Sat May 06 16:04:28 2017
+
+**********************************************************************************************
+Secção                 Endereço
+**********************************************************************************************
+
+startup                 0000H
+directdata              0004H
+DATA                    0006H
+TEXT                    0026H
+
+
+**********************************************************************************************
+Símbolo                Tipo   Valor
+**********************************************************************************************
+
+exit                    E     005CH
+is_leap                 E     0046H
+is_leap_bissexto        E     0050H
+is_leap_end             E     0058H
+is_leap_naobissexto     E     0054H
+is_leap_r1              E     0004H
+set_result              E     0042H
+table_month             E     0006H
+TABLE_MONTH_DIM         N     000DH
+teste_ano               E     0020H
+teste_dia               E     0024H
+teste_mes               E     0022H
+year_days               E     0026H
+
+
+E - Endereço   N - Constante numérica
+
+
+**********************************************************************************************
+Endereço  Código            Linha    Programa
+**********************************************************************************************
+
+                                1    		.section startup
+                                2    		.org 0
+    0000  6097                  3    		jmp year_days
+                                4    		
+                                5    		/****************************************************/
+                                6    		/*	Calculates number of days of year to date.		*/
+                                7    		/*	input - r0 year of reference					*/
+                                8    		/*			r1 month								*/
+                                9    		/*			r2 day									*/	
+                               10    		/*	output - r0	number of days						*/
+                               11    		/*	destroys - r3 and r4							*/
+                               12    		/****************************************************/
+                               13    		
+                               14    		.section directdata
+                               15    		.org 4
+                               16    
+                               17    		.data
+                               18    		.equ TABLE_MONTH_DIM, 13
+                               19    table_month:
+    0006  0000001F003B005A     20    		.word 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365
+    .     0078009700B500D4
+    .     00F301110130014E
+    .     016D            
+
+                               21    
+                               22    		/*---variaveis de entrada para teste---*/
+                               23    teste_ano:
+    0020  07E0                 24    		.word 2016
+                               25    teste_mes:
+    0022  0001                 26    		.word 1
+                               27    teste_dia:
+    0024  000A                 28    		.word 10
+                               29    		/*---variaveis de entrada para teste---*/
+                               30    
+                               31    		
+                               32    		.text
+                               33    year_days:
+    0026  1500                 34    		ld		r0,teste_ano			; r0 ano
+    0028  1511                 35    		ld		r1,teste_mes			; r1 mes
+    002A  1522                 36    		ld		r2,teste_dia			; r2 dia
+                               37    
+    002C  AC52                 38    		dec		r2						; decrementa um dia
+    002E  CE94                 39    		mov 	r4,r2					; adiciona ao registo de retorno - nao utiliza r0 pq r0 ainda retem uma informacao
+                               40    		
+    0030  AC4B                 41    		sub		r3,r1,#1				; decrementa o mes e guarda em r3
+    0032  0032                 42    		ldi 	r2, #low(table_month)
+    0034  0802                 43    		ldih 	r2, #high(table_month)
+    0036  1ED2                 44    		ld		r2,[r2,r3]				; obtem o numero de dia da tabela em relacao ao mes
+    0038  86A4                 45    		add		r4,r4,r2				; adiciona o numero de dias Ã¡ variavel de resposta
+                               46    		
+    003A  AC8B                 47    		sub 	r3,r1,#2				; verifica se mes>2
+    003C  5017                 48    		jc		set_result
+    003E  681F                 49    		jmpl	is_leap					;verifica se ano bissexto, ano em r0 e resposta em r0
+    0040  8624                 50    		add		r4,r4,r0
+                               51    		
+                               52    set_result:
+    0042  CF20                 53    		mov		r0,r4
+    0044  605F                 54    		jmp		exit
+                               55    	
+                               56    		
+                               57    
+                               58    		/****************************************************/
+                               59    		/*	Calculates if year is a leap year.				*/
+                               60    		/*	input - r0 year to calculate					*/
+                               61    		/*	output - r0 1 if year is leap year; 0 if not	*/
+                               62    		/****************************************************/
+                               63    
+                               64    		.section directdata
+                               65    is_leap_r1:
+    0004  0000                 66    		.word	0
+                               67    		
+                               68    		.text
+                               69    is_leap:
+    0046  3421                 70    		st		r1,is_leap_r1
+                               71    		
+    0048  E841                 72    		shr		r1,r0,#1,0
+    004A  5027                 73       		jc		is_leap_naobissexto
+    004C  E849                 74       		shr		r1,r1,#1,0
+    004E  5017                 75       		jc		is_leap_naobissexto
+                               76    is_leap_bissexto:
+    0050  0008                 77       		ldi		r0,#0x01
+    0052  6017                 78    		jmp		is_leap_end
+                               79    is_leap_naobissexto:
+    0054  0000                 80    		ldi		r0,#0x00
+    0056  6007                 81       		jmp		is_leap_end
+                               82    is_leap_end:	
+    0058  1421                 83    		ld		r1,is_leap_r1
+    005A  CB6F                 84    		ret
+                               85    		
+                               86    		
+                               87    
+                               88    		
+                               89    exit:		
+    005C  67FF                 90    		jmp $
+                               91    
+                               92    		.END
+                               93    		
+                               94    		

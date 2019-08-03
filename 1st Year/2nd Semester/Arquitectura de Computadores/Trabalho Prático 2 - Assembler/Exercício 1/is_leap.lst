@@ -1,0 +1,59 @@
+ASSEMBLER PDS16 - v3.0.2 
+C:\Users\Samuel\Desktop\Arquitetura de Computadores\Trabalho Prático 2 - Assembler\Exercício 1\is_leap.lst 	 Sat May 06 16:00:33 2017
+
+**********************************************************************************************
+Secção                 Endereço
+**********************************************************************************************
+
+is_leap                 0000H
+
+
+**********************************************************************************************
+Símbolo                Tipo   Valor
+**********************************************************************************************
+
+_after                  E     0014H
+_bissexto               E     000CH
+_naobissexto            E     0010H
+_shift                  E     0004H
+_year                   E     0000H
+
+
+E - Endereço   N - Constante numérica
+
+
+**********************************************************************************************
+Endereço  Código            Linha    Programa
+**********************************************************************************************
+
+                                1    /*uint8 is_leap(uint16 year) {
+                                2        return year % 4 == 0 && year%400==0;
+                                3        }
+                                4        */
+                                5    		/****************************************************/
+                                6    		/*	Calculates if year is a leap year.				*/
+                                7    		/*	input - r0 year to calculate					*/
+                                8    		/*	output - r0 1 if year is leap year; 0 if not	*/
+                                9    		/*	destroys - r1									*/
+                               10    		/****************************************************/
+                               11    	
+                               12    	.section is_leap
+                               13       	.org 0
+                               14    _year:
+    0000  07E1                 15       	.word 2017
+                               16       
+    0002  1400                 17       		ld r0,_year
+    0004  E841                 18    _shift:	shr r1,r0,#1,0
+    0006  5027                 19       		jc _naobissexto
+    0008  E849                 20       		shr r1,r1,#1,0
+    000A  5017                 21       		jc _naobissexto
+                               22    _bissexto:
+    000C  0008                 23       		ldi r0,#0x01
+    000E  6017                 24    		jmp _after
+                               25    _naobissexto:
+    0010  0000                 26    		ldi r0,#0x00
+    0012  6007                 27       		jmp _after
+                               28    
+    0014  67FF                 29    _after:	jmp $
+                               30    	
+                               31    .end

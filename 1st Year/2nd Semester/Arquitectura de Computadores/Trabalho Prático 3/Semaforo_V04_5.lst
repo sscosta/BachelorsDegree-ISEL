@@ -1,0 +1,527 @@
+ASSEMBLER PDS16 - v3.0.2 
+D:\AC\Trabalho Prático 3 - Semáforo\Fase2\docs tp3 ac\5jul17 - temporizações\Semaforo_V04_5.lst 	 Fri Jul 07 14:51:14 2017
+
+**********************************************************************************************
+Secção                 Endereço
+**********************************************************************************************
+
+code                    0000H
+DIRECT_DATA             0008H
+
+
+**********************************************************************************************
+Símbolo                Tipo   Valor
+**********************************************************************************************
+
+Accounting              E     00E6H
+Accounting_Link         E     004CH
+Accounting_link1        E     004EH
+Accounting_People       E     0114H
+Accounting_People_End   E     0128H
+Accounting_Sensor_S     E     00F0H
+Accounting_Sensor_S_End  E     0100H
+Accounting_Sensor_T     E     0102H
+Accounting_Sensor_T_End  E     0112H
+ADDR_IO                 E     0016H
+ADDR_NCS_EXT            E     0018H
+BLINKS_word             E     0042H
+Current_Sensor_S        E     0046H
+Current_Sensor_T        E     0044H
+Current_Sensors_Image   E     003EH
+flag_BS                 E     0038H
+flag_BT                 E     003AH
+input_data              E     00A6H
+Interrupt_Enable        E     0098H
+ISR                     E     0192H
+ISR_set_STATE_ALERT     E     01B8H
+ISR_set_STATE_W4_BUTTONS  E     01A0H
+ISR_set_STATE_W4_FIFTEEN_S_1  E     0160H
+ISR_set_STATE_W4_FIFTEEN_S_2  E     0154H
+ISR_set_STATE_W4_FIFTEEN_S_3  E     0150H
+ISR_set_STATE_W4_FIFTEEN_T_1  E     020CH
+ISR_set_STATE_W4_FIFTEEN_T_2  E     0200H
+ISR_set_STATE_W4_FIFTEEN_T_3  E     01FCH
+ISR_set_STATE_W4_TWO_MINUTES_S  E     016CH
+ISR_set_STATE_W4_TWO_MINUTES_T  E     0218H
+ISR_STATE_ALERT         E     01C2H
+ISR_State_End           E     01C4H
+ISR_STATE_W4_BUTTONS    E     01A8H
+ISR_STATE_W4_FIFTEEN_S  E     012AH
+ISR_STATE_W4_FIFTEEN_S_eval_BS  E     0142H
+ISR_STATE_W4_FIFTEEN_T  E     01D6H
+ISR_STATE_W4_FIFTEEN_T_eval_BT  E     01EEH
+ISR_STATE_W4_TWO_MINUTES_S  E     017EH
+ISR_STATE_W4_TWO_MINUTES_ST_people  E     023EH
+ISR_STATE_W4_TWO_MINUTES_ST_people_eval_2min  E     0252H
+ISR_STATE_W4_TWO_MINUTES_ST_people_eval_bs  E     0248H
+ISR_STATE_W4_TWO_MINUTES_T  E     022AH
+ISR_STATUS_index        E     0014H
+ISR_STATUS_table        E     0008H
+Last_Sensor_S           E     004AH
+Last_Sensor_T           E     0048H
+LIGHTS_word             E     0040H
+loop                    E     009CH
+main                    E     007AH
+MASK_DI                 E     001AH
+MASK_EI                 E     001CH
+MASK_GS_reset           E     002AH
+MASK_GS_reset_RS_set_GT_reset_RT_set  E     0030H
+MASK_GS_set             E     0022H
+MASK_GS_set_RS_set_GT_set_RT_set  E     0032H
+MASK_GT_reset           E     002CH
+MASK_GT_set             E     0024H
+MASK_RS_reset           E     0028H
+MASK_RS_set             E     0020H
+MASK_RT_reset           E     002EH
+MASK_RT_set             E     0026H
+number_of_people        E     0036H
+ParseInput              E     00AEH
+ParseInput_Button_S     E     00CEH
+ParseInput_Button_T     E     00BEH
+ParseInput_Sensor_S     E     00DEH
+ParseInput_Sensor_T     E     00B4H
+Psw_main_link           E     0078H
+table_count             E     0050H
+table_flip              E     0070H
+time_2min               E     0034H
+Timer                   E     003CH
+TIMER_START             E     0090H
+TIMER_START_const       E     001EH
+
+
+E - Endereço   N - Constante numérica
+
+
+**********************************************************************************************
+Endereço  Código            Linha    Programa
+**********************************************************************************************
+
+                                1            .section code
+                                2            .org    0
+    0000  1C7F                  3            ld	r7,[r7,#1]
+    0002  1C7F                  4            ld	r7,[r7,#1]
+    0004  007A0192              5    	.word	main, ISR
+                                6    
+                                7            .section DIRECT_DATA
+                                8    ISR_STATUS_table:
+    0008  01A8012A017E01D6      9    	.word	ISR_STATE_W4_BUTTONS, ISR_STATE_W4_FIFTEEN_S, ISR_STATE_W4_TWO_MINUTES_S, ISR_STATE_W4_FIFTEEN_T, ISR_STATE_W4_TWO_MINUTES_T, ISR_STATE_ALERT 
+    .     022A01C2        
+
+                               10    ISR_STATUS_index:
+    0014  0000                 11    	.space	2
+                               12    ADDR_IO:
+    0016  FF00                 13            .word   0xFF00
+                               14    ADDR_NCS_EXT:
+    0018  FF40                 15            .word   0xFF40
+                               16    MASK_DI:
+    001A  000F                 17    	.word	0xF
+                               18    MASK_EI:
+    001C  0010                 19    	.word	0x10
+                               20    
+                               21    TIMER_START_const:
+    001E  000A                 22    	.word	10
+                               23    	
+                               24    MASK_RS_set:
+    0020  0080                 25    	.word 10000000b
+                               26    MASK_GS_set:
+    0022  0040                 27    	.word 01000000b
+                               28    MASK_GT_set:
+    0024  0002                 29    	.word 00000010b
+                               30    MASK_RT_set:
+    0026  0001                 31    	.word 00000001b
+                               32    MASK_RS_reset:
+    0028  007F                 33    	.word 01111111b
+                               34    MASK_GS_reset:
+    002A  00BF                 35    	.word 10111111b
+                               36    MASK_GT_reset:
+    002C  00FD                 37    	.word 11111101b
+                               38    MASK_RT_reset:
+    002E  00FE                 39    	.word 11111110b
+                               40    
+                               41    MASK_GS_reset_RS_set_GT_reset_RT_set:
+    0030  0081                 42    	.word 10000001b
+                               43    MASK_GS_set_RS_set_GT_set_RT_set:
+    0032  00C3                 44    	.word 11000011b
+                               45    
+                               46    time_2min:
+    0034  0078                 47    	.word	0x78	
+                               48    number_of_people:
+    0036  0000                 49            .word   0
+                               50    flag_BS:
+    0038  0000                 51            .word   0
+                               52    flag_BT:
+    003A  0000                 53            .word   0
+                               54    Timer:
+    003C  0000                 55            .word   0
+                               56    Current_Sensors_Image:
+    003E  0000                 57            .word   0
+                               58    LIGHTS_word:
+    0040  0000                 59    	.word	0
+                               60    BLINKS_word:
+    0042  0000                 61    	.word	0	
+                               62    	
+                               63    Current_Sensor_T:
+    0044  0000                 64            .word   0
+                               65    Current_Sensor_S:
+    0046  0000                 66            .word   0
+                               67    Last_Sensor_T:
+    0048  0000                 68            .word   0
+                               69    Last_Sensor_S:
+    004A  0000                 70            .word   0
+                               71    Accounting_Link:
+    004C  0000                 72            .word   0
+                               73    Accounting_link1:
+    004E  0000                 74            .word   0
+                               75    table_count:
+    0050  0000000000000000     76            .word   0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,-1, 0, 0, 0, 0
+    .     0000000000000001
+    .     000000000000FFFF
+    .     0000000000000000                
+
+                               77    table_flip:
+    0070  0000000200010003                     78            .word   0,  2,  1,  3
+                               79    Psw_main_link:
+    0078  0000                 80            .word   0
+                               81    main:
+    007A  14D0                 82            ld      r0,MASK_DI
+    007C  C236                 83            anlf    r6,r6,r0
+                               84    	
+    007E  0001                 85            ldi     r1,#0
+    0080  14B2                 86            ld      r2,ADDR_IO
+    0082  3C11                 87            st      r1,[r2,#0]
+    0084  34A1                 88    	st	r1, ISR_STATUS_index
+    0086  3611                 89    	st	r1, BLINKS_word
+    0088  35B1                 90            st      r1,number_of_people
+    008A  35C1                 91            st      r1,flag_BS
+    008C  35D1                 92            st      r1,flag_BT
+    008E  35E1                 93            st      r1,Timer
+                               94    TIMER_START:
+    0090  0050                 95            ldi     r0,#10
+    0092  14C1                 96            ld      r1,ADDR_NCS_EXT
+    0094  3C08                 97            st      r0,[r1,#0]
+    0096  1C08                 98            ld      r0,[r1,#0]
+                               99    Interrupt_Enable:
+    0098  14E0                100            ld      r0,MASK_EI
+    009A  CA36                101            orlf    r6,r6,r0
+                              102    loop:
+    009C  6827                103            jmpl    Input_Data
+    009E  683F                104            jmpl    ParseInput
+    00A0  6917                105            jmpl    Accounting
+    00A2  67E7                106            jmp loop    
+                              107    
+    00A4  CB6F                108            ret
+                              109            
+                              110    input_data:
+    00A6  14B0                111            ld      r0, ADDR_IO
+    00A8  1C01                112            ld      r1, [r0,#0]
+    00AA  35F1                113            st      r1, Current_Sensors_Image
+    00AC  CB6F                114            ret
+                              115            
+                              116    ParseInput:
+    00AE  15F0                117            ld      r0, Current_Sensors_Image
+    00B0  0019                118            ldi     r1, #3  ;mask to obtain sensor
+    00B2  000A                119            ldi     r2, #1  ;mask to obtain botton
+                              120    ParseInput_Sensor_T:
+    00B4  C643                121            anl     r3, r0, r1
+    00B6  0384                122            ldi     r4,#low(table_flip)
+    00B8  0804                123            ldih    r4,#high(table_flip)
+    00BA  1EE3                124            ld      r3, [r4, r3]
+    00BC  3623                125            st      r3, Current_Sensor_T
+                              126    ParseInput_Button_T:
+    00BE  E880                127    	shr     r0, r0, #2, 0
+    00C0  15D3                128            ld      r3,flag_BT
+    00C2  CEDB                129            orl     r3,r3,r3
+    00C4  4827                130            jnz     ParseInput_Button_S
+    00C6  C683                131            anl     r3, r0, r2
+    00C8  4017                132            jz      ParseInput_Button_S
+    00CA  000B                133            ldi     r3,#1
+    00CC  35D3                134            st      r3,flag_BT
+                              135    ParseInput_Button_S:
+    00CE  E8C0                136            shr     r0, r0, #3, 0
+    00D0  15C3                137            ld      r3,flag_BS
+    00D2  CEDB                138            orl     r3,r3,r3
+    00D4  4827                139            jnz     ParseInput_Sensor_S
+    00D6  C683                140            anl     r3, r0, r2
+    00D8  4017                141            jz      ParseInput_Sensor_S
+    00DA  000B                142            ldi     r3,#1
+    00DC  35C3                143            st      r3,flag_BS
+                              144    ParseInput_Sensor_S:
+    00DE  E840                145            shr     r0, r0, #1, 0
+    00E0  C643                146            anl     r3, r0, r1
+    00E2  3633                147            st      r3, Current_Sensor_S
+    00E4  CB6F                148            ret
+                              149            
+                              150    Accounting:
+    00E6  3675                151            st      r5, Accounting_link1
+    00E8  681F                152            jmpl    Accounting_Sensor_S
+    00EA  685F                153            jmpl    Accounting_Sensor_T
+    00EC  1675                154    	ld      r5, Accounting_link1
+    00EE  CB6F                155            ret
+                              156    
+                              157            /********************************************************/
+                              158            /*  Account from Sensor S                               */
+                              159            /*  input   -                                           */
+                              160            /*  output  -                                           */
+                              161            /********************************************************/
+                              162    Accounting_Sensor_S:
+    00F0  1650                163            ld      r0, Last_Sensor_S
+                              164            ;sub     r1,r0,#3                        ;apenas contabiliza se last_sensor=b11
+                              165            ;jnz      Accounting_Sensor_T_End	; comentado, pois assim nao atualiza last_sensor, que e sempre 0
+    00F2  1631                166            ld      r1, Current_Sensor_S
+    00F4  D642                167            xrl     r2,r0,r1
+    00F6  4027                168            jz      Accounting_Sensor_S_End          ;se r0 e r1 iguais nao existe alteracao de sensor
+    00F8  3665                169            st      r5, Accounting_Link
+    00FA  6867                170            jmpl    Accounting_people
+    00FC  1665                171            ld      r5, Accounting_link
+    00FE  3651                172            st      r1, Last_Sensor_S
+                              173    Accounting_Sensor_S_End:
+    0100  CB6F                174            ret    
+                              175    
+                              176            /********************************************************/
+                              177            /*  Account from Sensor T                               */
+                              178            /*  input   -                                           */
+                              179            /*  output  -                                           */
+                              180            /********************************************************/
+                              181    Accounting_Sensor_T:
+    0102  1640                182            ld      r0, Last_Sensor_T
+                              183            ;sub     r1,r0,#3                        ;apenas contabiliza se last_sensor=b11
+                              184            ;jnz      Accounting_Sensor_T_End	;ver linhas iguais na rotina acima
+    0104  1621                185            ld      r1, Current_Sensor_T
+    0106  D642                186            xrl     r2,r0,r1
+    0108  4027                187            jz      Accounting_Sensor_T_End          ;se r0 e r1 iguais nao existe alteracao de sensor
+    010A  3665                188            st      r5, Accounting_Link
+    010C  681F                189            jmpl    Accounting_people
+    010E  1665                190            ld      r5, Accounting_link
+    0110  3641                191            st      r1, Last_Sensor_T
+                              192    Accounting_Sensor_T_End:
+    0112  CB6F                193            ret
+                              194    
+                              195    Accounting_People:
+    0114  0282                196            ldi     r2,#low(table_count)
+    0116  0802                197            ldih    r2,#high(table_count)
+    0118  E08B                198            shl     r3, r1, #2, 0
+    011A  861B                199            add     r3, r3, r0
+    011C  1ED4                200            ld      r4, [r2,r3]
+    011E  CF24                201            orl     r4,r4,r4
+    0120  401F                202            jz      Accounting_People_End        ;se nao tem pessoa para adicionar nao adiciona
+    0122  15B3                203            ld      r3, number_of_people
+    0124  871B                204            add     r3,r3,r4
+    0126  35B3                205            st      r3,number_of_people
+                              206    	
+                              207    Accounting_People_End:
+    0128  CB6F                208            ret
+                              209    
+                              210    	/*********** RAMO BS ***********/
+                              211    ISR_STATE_W4_FIFTEEN_S:
+    012A  15E3                212    	ld	r3,Timer
+    012C  CEDB                213    	orl	r3,r3,r3
+    012E  40F7                214    	jz	ISR_set_STATE_W4_TWO_MINUTES_S		;jump if T15=0
+    0130  15D3                215    	ld	r3,flag_BT
+    0132  CEDB                216    	orl	r3,r3,r3
+    0134  4037                217    	jz	ISR_STATE_W4_FIFTEEN_S_eval_BS
+    0136  1533                218    	ld 	r3,MASK_RT_set
+    0138  CED2                219    	orl	r2,r2,r3
+    013A  15E3                220    	ld	r3,Timer
+    013C  AC5B                221    	dec	r3
+    013E  35E3                222    	st	r3,Timer
+    0140  620F                223    	jmp	ISR_State_End
+                              224    ISR_STATE_W4_FIFTEEN_S_eval_BS:
+    0142  15C3                225    	ld	r3,flag_BS
+    0144  CEDB                226    	orl	r3,r3,r3
+    0146  4867                227    	jnz	ISR_set_STATE_W4_FIFTEEN_S_1		;jump if flag_BS=0
+    0148  15E3                228    	ld	r3,Timer
+    014A  AC5B                229    	dec	r3
+    014C  35E3                230    	st	r3,Timer
+    014E  61D7                231    	jmp	ISR_State_End
+                              232    
+                              233    ISR_set_STATE_W4_FIFTEEN_S_3:
+    0150  1543                234    	ld 	r3,MASK_RS_reset
+    0152  C6D2                235    	anl	r2,r2,r3
+                              236    ISR_set_STATE_W4_FIFTEEN_S_2:
+    0154  1513                237    	ld 	r3,MASK_GS_set
+    0156  CEC9                238    	orl	r1,r1,r3
+    0158  1543                239    	ld 	r3,MASK_RS_reset
+    015A  C6C9                240    	anl	r1,r1,r3
+    015C  0008                241    	ldi	r0,#1
+    015E  34A0                242    	st	r0,ISR_STATUS_index
+                              243    ISR_set_STATE_W4_FIFTEEN_S_1:
+    0160  007B                244    	ldi	r3,#0xF
+                              245    	;ldi	r3,#0x8
+    0162  35E3                246    	st	r3,Timer
+    0164  0003                247    	ldi	r3,#0
+    0166  35C3                248    	st	r3,flag_BS
+    0168  1513                249    	ld 	r3,MASK_GS_set
+    016A  6167                250    	jmp	ISR_State_End	
+                              251    	
+                              252    	
+                              253    ISR_set_STATE_W4_TWO_MINUTES_S:
+    016C  0013                254    	ldi	r3,#2
+    016E  34A3                255    	st	r3,ISR_STATUS_index
+    0170  15A3                256    	ld	r3,time_2min
+    0172  35E3                257    	st	r3,Timer
+    0174  1503                258    	ld 	r3,MASK_RS_set
+    0176  CEC9                259    	orl	r1,r1,r3
+    0178  1553                260    	ld 	r3,MASK_GS_reset
+    017A  C6C9                261    	anl	r1,r1,r3
+    017C  611F                262    	jmp	ISR_State_End
+                              263    	
+                              264    ISR_STATE_W4_TWO_MINUTES_S:
+    017E  15B3                265    	ld	r3,number_of_people
+    0180  CEDB                266    	orl	r3,r3,r3
+    0182  4AEF                267    	jnz	ISR_STATE_W4_TWO_MINUTES_ST_people
+    0184  15D3                268    	ld	r3,flag_BT
+    0186  CEDB                269    	orl	r3,r3,r3
+    0188  49CF                270    	jnz	ISR_set_STATE_W4_FIFTEEN_T_3
+    018A  15C3                271    	ld	r3,flag_BS
+    018C  CEDB                272    	orl	r3,r3,r3
+    018E  4047                273    	jz	ISR_set_STATE_W4_BUTTONS
+    0190  66FF                274    	jmp	ISR_set_STATE_W4_FIFTEEN_S_3
+                              275    
+                              276    
+                              277    	/********************************************************/
+                              278            /*							*/
+                              279            /*							*/
+                              280            /*							*/
+                              281            /********************************************************/
+                              282    	
+                              283    ISR:
+    0192  37C0                284            st      r0, Psw_main_link
+                              285    	;ld	r2,ISR_STATUS_table
+    0194  14A0                286    	ld	r0, ISR_STATUS_index
+    0196  1601                287    	ld	r1, LIGHTS_word
+    0198  1612                288    	ld	r2, BLINKS_word
+    019A  0043                289    	ldi	r3, #low(ISR_STATUS_table)
+    019C  0803                290    	ldih	r3, #high(ISR_STATUS_table)
+    019E  1E1F                291    	ld	r7,[r3,r0]
+                              292    	
+                              293    ISR_set_STATE_W4_BUTTONS:
+    01A0  0000                294    	ldi	r0,#0
+    01A2  34A0                295    	st	r0,ISR_STATUS_index
+    01A4  CE02                296    	mov	r2,r0
+    01A6  6077                297    	jmp	ISR_State_End
+                              298    	
+                              299    ISR_STATE_W4_BUTTONS:
+    01A8  1581                300    	ld 	r1,MASK_GS_reset_RS_set_GT_reset_RT_set
+    01AA  15C3                301    	ld	r3,flag_BS
+    01AC  CEDB                302    	orl	r3,r3,r3
+    01AE  4E97                303    	jnz	ISR_set_STATE_W4_FIFTEEN_S_2
+    01B0  15D3                304    	ld	r3,flag_BT
+    01B2  CEDB                305    	orl	r3,r3,r3
+    01B4  492F                306    	jnz	ISR_set_STATE_W4_FIFTEEN_T_2
+    01B6  6037                307    	jmp	ISR_State_End
+                              308    	
+                              309    ISR_set_STATE_ALERT:
+    01B8  1591                310    	ld 	r1,MASK_GS_set_RS_set_GT_set_RT_set
+    01BA  CE4A                311    	mov	r2,r1
+    01BC  002B                312    	ldi	r3,#5
+    01BE  34A3                313    	st	r3,ISR_STATUS_index
+    01C0  600F                314    	jmp	ISR_State_End
+                              315    ISR_STATE_ALERT:
+    01C2  6007                316    	jmp	ISR_State_End
+                              317    	
+                              318    ISR_State_End:
+    01C4  D689                319    	xrl	r1,r1,r2
+    01C6  3601                320    	st	r1,LIGHTS_word
+    01C8  3612                321    	st	r2,BLINKS_word
+    01CA  14B3                322    	ld	r3,ADDR_IO
+    01CC  3C19                323    	st	r1,[r3,#0]
+                              324    
+                              325    	;ldi     r3,#1
+    01CE  14C2                326            ld      r2,ADDR_NCS_EXT
+                              327            ;st      r3,[r2,#0]
+    01D0  1C13                328            ld      r3,[r2,#0]
+    01D2  17C0                329            ld      r0, Psw_main_link
+    01D4  7000                330            iret	
+                              331    	
+                              332    	
+                              333    	
+                              334    	/*********** RAMO BT ***********/
+                              335    	
+                              336    ISR_STATE_W4_FIFTEEN_T:
+    01D6  15E3                337    	ld	r3,Timer
+    01D8  CEDB                338    	orl	r3,r3,r3
+    01DA  40F7                339    	jz	ISR_set_STATE_W4_TWO_MINUTES_T		;jump if T15=0
+    01DC  15C3                340    	ld	r3,flag_BS
+    01DE  CEDB                341    	orl	r3,r3,r3
+    01E0  4037                342    	jz	ISR_STATE_W4_FIFTEEN_T_eval_BT
+    01E2  1503                343    	ld 	r3,MASK_RS_set
+    01E4  CED2                344    	orl	r2,r2,r3
+    01E6  15E3                345    	ld	r3,Timer
+    01E8  AC5B                346    	dec	r3
+    01EA  35E3                347    	st	r3,Timer
+    01EC  675F                348    	jmp	ISR_State_End
+                              349    ISR_STATE_W4_FIFTEEN_T_eval_BT:
+    01EE  15D3                350    	ld	r3,flag_BT
+    01F0  CEDB                351    	orl	r3,r3,r3
+    01F2  4867                352    	jnz	ISR_set_STATE_W4_FIFTEEN_T_1		;jump if flag_BT=0
+    01F4  15E3                353    	ld	r3,Timer
+    01F6  AC5B                354    	dec	r3
+    01F8  35E3                355    	st	r3,Timer
+    01FA  6727                356    	jmp	ISR_State_End
+                              357    
+                              358    ISR_set_STATE_W4_FIFTEEN_T_3:
+    01FC  1573                359    	ld 	r3,MASK_RT_reset
+    01FE  C6D2                360    	anl	r2,r2,r3
+                              361    ISR_set_STATE_W4_FIFTEEN_T_2:
+    0200  1523                362    	ld 	r3,MASK_GT_set
+    0202  CEC9                363    	orl	r1,r1,r3
+    0204  1573                364    	ld 	r3,MASK_RT_reset
+    0206  C6C9                365    	anl	r1,r1,r3
+    0208  0018                366    	ldi	r0,#3
+    020A  34A0                367    	st	r0,ISR_STATUS_index
+                              368    ISR_set_STATE_W4_FIFTEEN_T_1:
+    020C  007B                369    	ldi	r3, #0xF
+                              370    	;ldi	r3,#0x8
+    020E  35E3                371    	st	r3,Timer
+    0210  0003                372    	ldi	r3,#0
+    0212  35D3                373    	st	r3,flag_BT
+    0214  1523                374    	ld 	r3,MASK_GT_set
+    0216  66B7                375    	jmp	ISR_State_End	
+                              376    	
+                              377    ISR_set_STATE_W4_TWO_MINUTES_T:
+    0218  0023                378    	ldi	r3,#4
+    021A  34A3                379    	st	r3,ISR_STATUS_index
+    021C  15A3                380    	ld	r3,time_2min
+    021E  35E3                381    	st	r3,Timer
+    0220  1533                382    	ld 	r3,MASK_RT_set
+    0222  CEC9                383    	orl	r1,r1,r3
+    0224  1563                384    	ld 	r3,MASK_GT_reset
+    0226  C6C9                385    	anl	r1,r1,r3
+    0228  666F                386    	jmp	ISR_State_End
+                              387    
+                              388    ISR_STATE_W4_TWO_MINUTES_T:
+    022A  15B3                389    	ld	r3,number_of_people
+    022C  CEDB                390    	orl	r3,r3,r3
+    022E  483F                391    	jnz	ISR_STATE_W4_TWO_MINUTES_ST_people
+    0230  15C3                392    	ld	r3,flag_BS
+    0232  CEDB                393    	orl	r3,r3,r3
+    0234  4C6F                394    	jnz	ISR_set_STATE_W4_FIFTEEN_S_3
+    0236  15D3                395    	ld	r3,flag_BT
+    0238  CEDB                396    	orl	r3,r3,r3
+    023A  4597                397    	jz	ISR_set_STATE_W4_BUTTONS
+    023C  66FF                398    	jmp	ISR_set_STATE_W4_FIFTEEN_T_3
+                              399    
+                              400    	
+                              401    	
+                              402    ISR_STATE_W4_TWO_MINUTES_ST_people:	
+    023E  15D3                403    	ld	r3,flag_BT
+    0240  CEDB                404    	orl	r3,r3,r3
+    0242  4017                405    	jz	ISR_STATE_W4_TWO_MINUTES_ST_people_eval_bs
+    0244  1533                406    	ld 	r3,MASK_RT_set
+    0246  CED2                407    	orl	R2,r2,r3
+                              408    ISR_STATE_W4_TWO_MINUTES_ST_people_eval_bs:
+    0248  15C3                409    	ld	r3,flag_BS
+    024A  CEDB                410    	orl	r3,r3,r3
+    024C  4017                411    	jz	ISR_STATE_W4_TWO_MINUTES_ST_people_eval_2min
+    024E  1503                412    	ld 	r3,MASK_RS_set
+    0250  CED2                413    	orl	r2,r2,r3
+                              414    ISR_STATE_W4_TWO_MINUTES_ST_people_eval_2min:
+    0252  15E3                415    	ld	r3,Timer
+    0254  CEDB                416    	orl	r3,r3,r3
+    0256  4587                417    	jz	ISR_set_STATE_ALERT
+    0258  AC5B                418    	dec	r3
+    025A  35E3                419    	st	r3,Timer
+    025C  659F                420    	jmp	ISR_State_End
+                              421    
+                              422    
+                              423    

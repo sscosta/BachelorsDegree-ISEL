@@ -1,0 +1,11 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\bin\Debug\DALFranqueadoInterfaces.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\bin\Debug\DALFranqueadoInterfaces.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\bin\Debug\DALAbstraction.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\bin\Debug\Entidades.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\bin\Debug\DALAbstraction.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\bin\Debug\Entidades.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\obj\Debug\DALFranqueadoInterfaces.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\obj\Debug\DALFranqueadoInterfaces.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\obj\Debug\DALFranqueadoInterfaces.csproj.CopyComplete
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\obj\Debug\DALFranqueadoInterfaces.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\DALFranqueadoInterfaces\obj\Debug\DALFranqueadoInterfaces.pdb

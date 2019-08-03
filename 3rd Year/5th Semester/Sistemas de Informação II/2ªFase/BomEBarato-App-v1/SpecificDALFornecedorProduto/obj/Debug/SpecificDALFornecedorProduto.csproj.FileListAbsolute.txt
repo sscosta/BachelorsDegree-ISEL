@@ -1,0 +1,15 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\SpecificDALFornecedorProduto.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\SpecificDALFornecedorProduto.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\DALAbstraction.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\DALFornecedorInterfaces.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\DALFornecedorProdutoInterfaces.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\Entidades.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\DALAbstraction.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\DALFornecedorInterfaces.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\DALFornecedorProdutoInterfaces.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\bin\Debug\Entidades.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\obj\Debug\SpecificDALFornecedorProduto.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\obj\Debug\SpecificDALFornecedorProduto.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\obj\Debug\SpecificDALFornecedorProduto.csproj.CopyComplete
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\obj\Debug\SpecificDALFornecedorProduto.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALFornecedorProduto\obj\Debug\SpecificDALFornecedorProduto.pdb

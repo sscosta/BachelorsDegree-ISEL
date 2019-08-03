@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Circuito</string>
+    <string name="Title_text">Circuito</string>
+    <string name="Level_text">Nível %1$d</string>
+    <string name="Next_Level_text">Próximo nível</string>
+    <string name="Time_text">Tempo</string>
+</resources>

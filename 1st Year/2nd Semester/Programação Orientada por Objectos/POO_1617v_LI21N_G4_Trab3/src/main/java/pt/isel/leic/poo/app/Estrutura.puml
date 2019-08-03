@@ -1,0 +1,43 @@
+@startuml
+package "Control" #DDDDDD {
+ class MenuActivity
+ MenuActivity --> GameActivity: «launches»
+ class GameActivity
+
+}
+
+package "Model"  {
+ GameActivity *-- Game : -modelCircuit
+ enum Dir
+ class Game
+ Game *-- Circuit: -modelCircuit
+ Circuit ..> Position: «use»
+ Circuit <.. Loader : «create»
+ Circuit *-- Cell : -grid "*"
+ Game ..> Loader : «use»
+
+ Abstract Cell
+ Cell *--  Dir : -dirConnected "*"
+ Cell <|-- LineCell : "*"
+ Cell <|-- FreeCell : "*"
+ Cell <|-- TerminalCell : "*"
+ Cell <|-- BlockCell : "*"
+ Cell <|-- CurveCell : "*"
+
+}
+
+package "View" #DDDDAA {
+ interface Tile
+ Abstract CellView
+ CellView ..> Tile : implements
+ GameActivity *-- TilePanel : -viewTilePanel
+ TilePanel *-- CellView : -tiles "*"
+ Abstract CellView
+ Cell<-- CellView :  " #cell"
+ CellView <|-- LineView :"*"
+ CellView <|-- FreeView : "*"
+ CellView <|-- TerminalView : "*"
+ CellView <|-- BlockView : "*"
+ CellView <|-- CurveView : "*"
+}
+@enduml

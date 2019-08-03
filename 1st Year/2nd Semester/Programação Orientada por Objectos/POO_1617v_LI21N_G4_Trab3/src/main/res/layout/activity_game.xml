@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroud"
+    tools:context="pt.isel.leic.poo.app.GameActivity">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="368dp"
+        android:layout_height="503dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/backgroud"
+                android:text="@string/Title_text"
+                android:textAlignment="center" />
+
+            <pt.isel.poo.tile.TilePanel
+                android:id="@+id/tilePanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="fill" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/LEVEL_TEXT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/backgroud"
+                android:text="@string/Level_text"
+                android:textAlignment="center"
+                android:textColor="@color/foregroungLevel" />
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroud"
+                android:text="@string/Time_text"
+                android:textAlignment="center"
+                android:textColor="@color/foregroungTime" />
+
+            <Button
+                android:id="@+id/NextLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/backgroudButton"
+                android:textColor="@color/backgroud"
+                android:clickable="false"
+                android:visibility="invisible"
+                android:text="@string/Next_Level_text" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

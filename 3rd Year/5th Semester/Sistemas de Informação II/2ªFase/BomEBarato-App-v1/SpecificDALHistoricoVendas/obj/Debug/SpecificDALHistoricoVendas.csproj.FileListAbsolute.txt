@@ -1,0 +1,13 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\SpecificDALHistoricoVendas.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\SpecificDALHistoricoVendas.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\DALAbstraction.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\DALHistoricoVendasInterfaces.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\Entidades.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\DALAbstraction.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\DALHistoricoVendasInterfaces.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\bin\Debug\Entidades.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\obj\Debug\SpecificDALHistoricoVendas.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\obj\Debug\SpecificDALHistoricoVendas.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\obj\Debug\SpecificDALHistoricoVendas.csproj.CopyComplete
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\obj\Debug\SpecificDALHistoricoVendas.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v1\SpecificDALHistoricoVendas\obj\Debug\SpecificDALHistoricoVendas.pdb

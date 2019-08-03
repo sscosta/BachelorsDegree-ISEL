@@ -1,0 +1,6 @@
+
+Descriptor for encodedMessage1.mat
+
+Encoding type: 			NRZ Unipolar line code
+Frequency of sampling: 	Fs = 80000 Hz
+Binary Debit:			Rb =  1000 bit/s

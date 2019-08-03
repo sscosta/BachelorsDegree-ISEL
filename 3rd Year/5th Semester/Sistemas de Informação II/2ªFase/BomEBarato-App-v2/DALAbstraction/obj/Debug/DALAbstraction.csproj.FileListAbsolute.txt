@@ -1,0 +1,15 @@
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\obj\Debug\DALAbstraction.csprojAssemblyReference.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\obj\Debug\DALAbstraction.csproj.CoreCompileInputs.cache
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\DALAbstraction.dll.config
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\DALAbstraction.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\DALAbstraction.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\EntityFramework.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\EntityFramework.SqlServer.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\ViewController.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\ViewController.pdb
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\ViewController.dll.config
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\EntityFramework.xml
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\bin\Debug\EntityFramework.SqlServer.xml
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\obj\Debug\DALAbstraction.csproj.CopyComplete
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\obj\Debug\DALAbstraction.dll
+D:\18_19SV\SI2\Repo\1819v-si2\2ªFase\BomEBarato-App-v2\DALAbstraction\obj\Debug\DALAbstraction.pdb

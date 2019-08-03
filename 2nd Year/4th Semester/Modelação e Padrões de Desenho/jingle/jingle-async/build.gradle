@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    compile project(':jingle-util')
+    compile 'com.google.code.gson:gson:2.8.5'
+	compile 'com.github.javasync:AsyncFileRw:1.1.2'
+    compile 'org.asynchttpclient:async-http-client:2.4.9'
+    compile 'io.vertx:vertx-web:3.7.0'
+    compile 'com.github.xmlet:htmlflow:3.2'
+    testCompile 'junit:junit:4.8.1'
+	
+}
