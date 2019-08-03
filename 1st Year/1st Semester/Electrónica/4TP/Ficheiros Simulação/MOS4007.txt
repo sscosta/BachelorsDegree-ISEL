@@ -1,0 +1,28 @@
+*------------------------------------------------------------------------------
+*:::::::	Market Available Devices
+*:::::::	MOSFET Models
+*--------------TOX70-KP50 LAMBDA=11E-3
+.model HEF4007n	NMOS(L=5E-6 W=100E-6 VTO=1.42V TOX=70E-9 KP=44E-6 GAMMA=2.0 CBD=0.2E-12 CBS=0.2E-12 MJ=0.75 LAMBDA=16E-3 mfg=Philips)  
+*
+*	Model by: Fernando Azevedo
+*	UpDate:   2012-05-12
+*                 Philips
+*---------------
+.model HEF4007p	PMOS(L=5E-6 W=100E-6 VTO=-1.6V TOX=71E-9 KP=15E-6 GAMMA=1.0 CBD=0.2E-12 CBS=0.2E-12 MJ=0.75 LAMBDA=4E-3 mfg=Philips) 
+*
+*	Model by: Fernando Azevedo
+*	UpDate:   2003-04-20
+*                 Philips
+*---------------
+.model HCF4007n	NMOS(L=5E-6 W=124E-6 VTO=1.4V TOX=1080E-10 KP=20E-6 GAMMA=1.5 CBD=0.2E-12 CBS=0.2E-12 MJ=0.75 LAMBDA=0.01 mfg=SGSThomsom)  
+*
+*	Model by: Miguel Fernandes
+*	UpDate:   2007-03-16
+*                 SGS_Thomson
+*---------------
+*.model HCF4007p PMOS(L=5E-6 W=124E-6 VTO=-1.4V TOX=1080E-10 KP=40E-6 GAMMA=1.5 CBD=0.2E-12 CBS=0.2E-12 MJ=0.75 LAMBDA=0.02 mfg=SGSThomsom)
+*
+*	Model by: Miguel Fernandes
+*	UpDate:   2007-03-16
+*---------------
+*
