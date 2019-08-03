@@ -62,11 +62,7 @@ Programação na Internet - *Fall semester 2019/2020*
 
 Programação de Dispositivos Móveis - 16/20
 
-Programação Funcional - *Fall semester 2019/2020*
-
 Redes de Internet - 13/20
-
-Segurança Informática - *Fall semester 2019/2020*
 
 Sistemas de Informação II - 16/20
 
@@ -75,3 +71,7 @@ Teoria de Jogos - 16/20
 
 ## 6th Semester
 Projecto e Seminário - *Summer semester 2019/2020*
+
+Programação Funcional - *Fall semester 2019/2020*
+
+Segurança Informática - *Fall semester 2019/2020*
