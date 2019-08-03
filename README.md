@@ -73,5 +73,5 @@ Sistemas de Informação II - 16/20
 Teoria de Jogos - 16/20
 
 
-#6th Semester
+##6th Semester
 Projecto e Seminário - *Summer semester 2019/2020*
