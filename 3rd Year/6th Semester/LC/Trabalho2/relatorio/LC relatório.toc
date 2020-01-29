@@ -1,0 +1,8 @@
+\babel@toc {portuguese}{}
+\contentsline {section}{\numberline {1}Caracteriza\IeC {\c c}\IeC {\~a}o e modela\IeC {\c c}\IeC {\~a}o do problema}{3}{section.0.1}% 
+\contentsline {section}{\numberline {2}Ponto 1}{3}{section.0.2}% 
+\contentsline {section}{\numberline {3}Ponto 2}{3}{section.0.3}% 
+\contentsline {section}{\numberline {4}Ponto 3}{3}{section.0.4}% 
+\contentsline {section}{\numberline {5}Ponto 4}{4}{section.0.5}% 
+\contentsline {section}{\numberline {6}Ponto 5}{4}{section.0.6}% 
+\contentsline {section}{\numberline {7}Ponto 6}{4}{section.0.7}% 

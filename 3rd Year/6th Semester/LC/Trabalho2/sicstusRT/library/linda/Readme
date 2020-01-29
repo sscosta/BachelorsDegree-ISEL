@@ -1,0 +1,8 @@
+Linda is a library supporting process communication according to the
+"Linda model".
+
+	Makefile - makefile
+	README - this file
+	client.pl - Program for linda-client
+	server.pl - Program for linda-client
+

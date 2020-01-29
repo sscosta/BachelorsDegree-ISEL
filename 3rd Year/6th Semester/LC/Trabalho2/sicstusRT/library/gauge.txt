@@ -1,0 +1,70 @@
+Guide to Gauge
+==============
+
+Buttons:
+
+CALCULATE
+Push the Calculate button to calculate the values according to the
+current settings. The values are displayed in a histogram.
+
+RESET COUNTERS
+The execution counters of the displayed predicates and clauses may be
+reset by pushing the "Reset Count" button.
+
+PRINT
+Open the printing dialog window. This allows printing the histogram
+on any postscript printer, or to file. To print on non-postscript
+printers, it is recommended to save to file and then print the
+resulting postscript file, using for example Ghostscript.
+
+HELP
+Show this text.
+
+QUIT
+The Quit button quits Gauge and closes the gauge windows.
+
+
+Settings:
+
+SPECIFICATION
+Calls - The number of times a predicate/clause was called.
+Execution Time - The execution time. NOTE, this is a synthetic value.
+Choice Points - Number of choice points actually created at clause entry.
+Shallow Failures - Number of failures in the ``if'' part of
+	if-then-else statements, or in the ``guard'' part of guarded clauses.
+Deep Failures - Number of failures that don't count as shallow.
+Backtracking - Number of times a clause was backtracked into.
+
+RESOLUTION
+Predicate - Compute results on a per predicate basis. Predicates are
+	denoted by "Name/Arity".
+Clause - Compute results on a per clause basis. Clauses are denoted by
+	"Name/Arity/ClauseNumber".
+User+System Clauses - Compute results on a per clause basis but show
+	the system generated clauses as any other clause. Examples of
+	system generated clauses are clauses for disjunction (a;b) and
+	If-Then-Else (a->b;c). Those clauses are denoted as the user
+	clauses, but with their names replaced by (MainClause-Number).
+	Here MainClause is the "parent" clause and Number is the ordinal
+	number of this generated predicate within the parent clause.
+
+SORT ORDER
+Alphabetic - Sort the bars in alphabetic order.
+Descending values - Sort the bars by descending values.
+Ascending values - Sort the bars by ascending values.
+Top 40 - Show just the 40 highest values in descending order.
+
+SCALE
+Linear - Display values with a linear scale.
+Logarithmic - Display values with a logarithmic scale.
+
+SHOW
+All - Show all values in the histogram.
+No zero values - Show only non-zero values.
+
+FONT
+The font used in the histogram chart.
+
+VALUE INFO
+By clicking on the bars of the histogram, the figures are displayed in
+the "Value Info" window.

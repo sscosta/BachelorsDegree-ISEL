@@ -1,0 +1,203 @@
+/*-
+ * Copyright (c) 1992, 1993
+ *      The Regents of the University of California.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *    must display the following acknowledgement:
+ *      This product includes software developed by the University of
+ *      California, Berkeley and its contributors.
+ * 4. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ */
+
+/* This file provides a quicksort function which takes an unsorted array
+   as input and sorts it in-place. This macrofied
+   version can be used to generate different versions of this function
+   for different kinds of lists and objects.
+   To use this quicksort package you have to #define the following macros
+   and then #include this file to get your customized copy of quicksort.
+   The maros needed are:
+   
+   QType 	- type of the objects to sort
+   QCmp(QType *a,QType b) - returns -1 if a<b, 1 if a>b, 0 if a=b.
+   QSort		- name of the quicksort function
+*/
+
+#define QSize sizeof(QType)
+
+#define QMin(a, b)       (a) < (b) ? a : b
+
+#define SWAPFUNC(R) CONC(R,swap)
+
+#define MEDFUNC(R) CONC(R,med3)
+
+#define CONC(A,B) A##B
+
+/*
+ * Qsort routine from Bentley & McIlroy's "Engineering a Sort Function".
+ */
+#define swapcode(TYPE, parmi, parmj, n) {               \
+        long i = (n) / sizeof (TYPE);                   \
+        register TYPE *pi = (TYPE *) (parmi);           \
+        register TYPE *pj = (TYPE *) (parmj);           \
+        do {                                            \
+                register TYPE   t = *pi;                \
+                *pi++ = *pj;                            \
+                *pj++ = t;                              \
+        } while (--i > 0);                              \
+}
+
+#define SWAPINIT(a) swaptype = ((char *)a - (char *)0) % sizeof(long) || \
+        QSize % sizeof(long) ? 2 : QSize == sizeof(long)? 0 : 1;
+
+static INLINE void
+SWAPFUNC(QSort) MAGIC (HIDDEN_PROTO
+                       char *a, char *b, int n, int swaptype)
+{
+#if MULTI_SP_AWARE
+       (void)HIDDEN_ARG;             /* [PM] 3.9b5 avoid -Wunused */
+#endif /* MULTI_SP_AWARE */
+
+        if(swaptype <= 1)
+                swapcode(long, a, b, n)
+        else
+                swapcode(char, a, b, n)
+}
+
+
+#define swap(a, b)                                      \
+        if (swaptype == 0) {                            \
+                long t = *(long *)(a);                  \
+                *(long *)(a) = *(long *)(b);            \
+                *(long *)(b) = t;                       \
+        } else                                          \
+                SWAPFUNC(QSort)(a, b, QSize, swaptype)
+
+#define vecswap(a, b, n)        if ((n) > 0) SWAPFUNC(QSort)(a, b, n, swaptype)
+
+static INLINE char *
+MEDFUNC(QSort) MAGIC (HIDDEN_PROTO char *a, char *b, char *c)
+{
+        (void)HIDDEN_ARG_OR_ZERO;
+        return QCmp((QType *)a, (QType *)b) < 0 ?
+               (QCmp((QType *)b, (QType *)c) < 0 ? b : (QCmp((QType *)a, (QType *)c) < 0 ? c : a ))
+              :(QCmp((QType *)b, (QType *)c) > 0 ? b : (QCmp((QType *)a, (QType *)c) < 0 ? a : c ));
+}
+
+static void
+QSort MAGIC (HIDDEN_PROTO QType *a, int n)
+{
+        char *pa, *pb, *pc, *pd, *pl, *pm, *pn;
+        int d, r, swaptype, swap_cnt;
+
+loop:   SWAPINIT(a);
+        swap_cnt = 0;
+        if (n < 7) {
+                for (pm = (char *)a + QSize; pm < (char *)a + n * QSize; pm += QSize)
+                        for (pl = pm; pl > (char *)a && QCmp((QType *)(pl - QSize), (QType *)pl) > 0;
+                             pl -= QSize)
+                                swap(pl, pl - QSize);
+                return;
+        }
+        pm = (char *)a + (n / 2) * QSize;
+        if (n > 7) {
+                pl = (char *)a;
+                pn = (char *)a + (n - 1) * QSize;
+                if (n > 40) {
+                        d = (n / 8) * QSize;
+                        pl = MEDFUNC(QSort)(pl, pl + d, pl + 2 * d);
+                        pm = MEDFUNC(QSort)(pm - d, pm, pm + d);
+                        pn = MEDFUNC(QSort)(pn - 2 * d, pn - d, pn);
+                }
+                pm = MEDFUNC(QSort)(pl, pm, pn);
+        }
+        swap((char *)a, pm);
+        pa = pb = (char *)a + QSize;
+
+        pc = pd = (char *)a + (n - 1) * QSize;
+        for (;;) {
+                while (pb <= pc && (r = QCmp((QType *)pb, (QType *)a)) <= 0) {
+                        if (r == 0) {
+                                swap_cnt = 1;
+                                swap(pa, pb);
+                                pa += QSize;
+                        }
+                        pb += QSize;
+                }
+                while (pb <= pc && (r = QCmp((QType *)pc, (QType *)a)) >= 0) {
+                        if (r == 0) {
+                                swap_cnt = 1;
+                                swap(pc, pd);
+                                pd -= QSize;
+                        }
+                        pc -= QSize;
+                }
+                if (pb > pc)
+                        break;
+                swap(pb, pc);
+                swap_cnt = 1;
+                pb += QSize;
+                pc -= QSize;
+        }
+        if (swap_cnt == 0) {  /* Switch to insertion sort */
+                for (pm = (char *)a + QSize; pm < (char *)a + n * QSize; pm += QSize)
+                        for (pl = pm; pl > (char *)a && QCmp((QType *)(pl - QSize), (QType *)pl) > 0;
+                             pl -= QSize)
+                                swap(pl, pl - QSize);
+                return;
+        }
+
+        pn = (char *)a + n * QSize;
+        r = QMin(pa - (char *)a, pb - pa);
+        vecswap((char *)a, pb - r, r);
+        r = QMin(pd - pc, pn - pd - QSize);
+        vecswap(pb, pn - r, r);
+        if ((r = pb - pa) > QSize)
+                QSort(a, r / QSize);
+        if ((r = pd - pc) > QSize) {
+                /* Iterate rather than recurse to save stack space */
+                a = (QType *)(pn - r);
+                n = r / QSize;
+                goto loop;
+        }
+/*              QSort(pn - r, r / QSize);*/
+}
+
+
+/* cleanup for loading the same file with different defs. */
+
+#undef QType
+#undef QCmp
+#undef QSort
+#undef QSize
+#undef QMin
+#undef MEDFUNC
+#undef CONC
+#undef swapcode
+#undef SWAPINIT
+#undef SWAPFUNC
+#undef swapcode
+#undef swap
+#undef vecswap

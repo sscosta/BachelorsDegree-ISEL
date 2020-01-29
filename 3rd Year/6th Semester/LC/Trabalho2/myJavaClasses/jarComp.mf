@@ -1,0 +1,21 @@
+Name: wv/isel/ssic/lc/demos/viajar/Localidade.class
+Java-Bean: false
+
+Name: wv/isel/ssic/lc/demos/viajar/Percurso.class
+Java-Bean: false
+
+Name: wv/isel/ssic/lc/demos/viajar/Mapa.class
+Java-Bean: false
+
+Name: wv/isel/ssic/lc/demos/viajar/ViajarResListener.class
+Java-Bean: false
+
+Name: wv/isel/ssic/lc/demos/viajar/ViajarComp.class
+Java-Bean: True
+
+Name: wv/isel/ssic/lc/demos/viajar/ViajarComTextoComp.class
+Java-Bean: true
+
+Name: wv/isel/ssic/lc/demos/viajar/ViajarComGraficosComp.class
+Java-Bean: true
+

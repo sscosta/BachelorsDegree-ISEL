@@ -1,0 +1,82 @@
+2001-04-26 probably somewhat out of date
+
+		       SICStus Library Modules
+		       -----------------------
+
+How to build
+------------
+
+Build from toplevel directory (..) using the following commands:
+
+% make lib
+
+or to build specific modules
+
+% make lib MODULES="clpfd.po jasper.po tcltk.po"
+
+
+Files
+-----
+
+Makefile		Makefile for this directory.
+Makefile_<xxx>		Automatically generated makefile fragments
+			for building the foreign resources
+genmakefile.pl		Perl-script to generate the Makefile_xxx files
+README			This text.
+
+arrays.pl		Array manipulation routines.
+assoc.pl		AVL Tree Implementaion of Association Lists.
+atts.pl			Attributed variables.
+charsio.pl		I/O on lists of character codes.
+charsio.c		C code for charsio.
+clpb.pl			clp(B) constraint solver.
+clpfd/, clpfd.pl	clp(FD) constraint solver.
+clpq/, clpq.pl		clp(Q) constraint solver.
+clpqr/,			clp(Q,R) constraint solvers common.
+clpr/, clpr.pl		clp(R) constraint solver.
+db/, db.pl		Persistent Fact Storage Facility.
+fastrw.pl		Fast I/O of terms.
+fastrw.c		C code for fastrw.
+fastrw.h		C headers for fastrw.
+fdbg.pl			Finite domain constraint tracer.
+flinkage.pl		Support for creating flinkage.c files.
+gauge.pl		The Gauge profiling tool.
+gauge.txt		Gauge Help text
+heaps.pl		Priority queues.
+jasper/, jasper.pl	Java-Prolog interface
+linda/			Linda---Process communication.
+lists.pl		List Processing predicates.
+mkindex.pl		Library index generator.
+objects/, objects.pl	Prolog Objects.
+ordsets.pl		Ordered set manipulation.
+pow.pl			Prolog Objects Windows.
+queues.pl		Queue operations.
+random.pl		Random number generator.
+random.c		C code for random numbers.
+sockets.pl		Socket operations.
+sockets.c		C code for socket operations.
+system.pl		OS interface utilites.
+system.c		OS interface utilites for UNIX.
+systos2.c		OS interface utilites for OS/2.
+systw32.c		OS interface utilites for Win32.
+tcltk.pl		Tcl/Tk language/toolkit interface.
+tcltk/			Tcl/Tk interface C code.
+terms.pl		Term utilities.
+timeout.pl		Timeout primitive.
+timeout.c		C code for timeout primitive.
+tkconsole.tcl, tkconsole.pl	   Tcl/Tk source consol.
+tkterm.tcl	        Tcl/Tk terminal window.
+trees.pl		Updatable binary trees.
+ugraphs.pl		Unweighted Graph processing utilities.
+vbsp/, vbsp.pl		Visual Basic Interface
+wgraphs.pl		Weighted Graph processing utilities.
+xref.pl			Cross referencer.
+
+Obsolete stuff:
+gcla/			Generalized Horn Clause Language.
+makefile.bc		Makefile for Borland C.
+makefile.msc		Makefile for Microsoft C.
+makefile.wat		Makefile for Watcom C.
+makefile.bc		d:o, Win32-Borland
+makefile.msc		d:o, Win32-Visual C++
+mkos2emx		Makefile for OS/2.

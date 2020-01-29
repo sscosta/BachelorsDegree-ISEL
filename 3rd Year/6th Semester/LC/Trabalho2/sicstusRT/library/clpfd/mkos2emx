@@ -1,0 +1,32 @@
+#Assumes we're in sicstus3\fd
+SP_LIB= ..\..
+SP_BIN= ..\..\bin
+SP_INC= ..\..\include
+
+CC= gcc
+CFLAGS_INC= -I..\..\Emulator -I$(SP_INC)
+INCR_CFLAGS=
+O= obj
+CFLAGS_PRODUCTION= -O2 -fomit-frame-pointer -m486
+CFLAGS_DEBUG= -g
+CFLAGS_obj= -Zomf
+CFLAGS_o=
+CFLAGS= $(CFLAGS_$(O)) $(CFLAGS_$(VERSION)) $(INCR_CFLAGS) -DSP_INSIDER $(CFLAGS_INC)
+PROLOG= $(SP_BIN)\sicstus
+
+dyn:	fd.obj fd_glue.obj
+
+stat:	fds.obj fds_glue.obj
+
+fd_glue.obj fds_glue.obj:	fd_glue.c
+	$(CC) $(CFLAGS) -c fd_glue.c -o $*.obj
+
+fd_glue.c:	..\clpfd.pl
+	echo prolog:prepare_foreign_resource(clpfd,'../clpfd','fd_glue.c'). | $(PROLOG) -f
+
+fd.obj fds.obj:	fd.c fd_insn.h
+	$(CC) $(CFLAGS) -c fd.c -o $*.obj
+
+clean:
+	-del fd_glue.c
+	-del *.obj

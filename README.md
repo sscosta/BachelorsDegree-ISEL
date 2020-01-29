@@ -72,6 +72,6 @@ Teoria de Jogos - 16/20
 ## 6th Semester
 Projecto e Seminário - *Summer semester 2019/2020*
 
-Programação Funcional - *Fall semester 2019/2020*
+Lógica e Computação - 15/20
 
-Segurança Informática - *Fall semester 2019/2020*
+Segurança Informática - 16/20
