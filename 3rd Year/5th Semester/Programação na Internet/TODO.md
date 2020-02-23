@@ -1,0 +1,7 @@
+- store hash of passwords + salt
+- correct difference in handling of status 204
+- separate httpHandler in http + jsontoHttpSender
+- make a more robust cache of games in bga-api-service
+- set environment variables:
+    - passportsecret
+    - bga_client_id
