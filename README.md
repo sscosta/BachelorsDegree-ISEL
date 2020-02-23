@@ -56,9 +56,9 @@ Sistemas Operativos - 14/20
 # 3rd Year
 
 ## 5th Semester
-Programação Concorrente - *Fall semester 2019/2020*
+Programação Concorrente - 14
 
-Programação na Internet - *Fall semester 2019/2020*
+Programação na Internet - 17
 
 Programação de Dispositivos Móveis - 16/20
 
