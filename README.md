@@ -70,7 +70,7 @@ Teoria de Jogos - 16/20
 
 
 ## 6th Semester
-Projecto e Seminário - *Summer semester 2019/2020*
+Projecto e Seminário - 17/20
 
 Lógica e Computação - 14/20
 
